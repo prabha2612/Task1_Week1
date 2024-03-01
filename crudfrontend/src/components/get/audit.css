@@ -1,0 +1,61 @@
+.AuditHistory {
+  width: 90%;
+  background-color: white;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  border-radius: 5px;
+  margin: 50px auto;
+  padding: 50px;
+  /* overflow-x: auto; */
+}
+.addButton {
+  text-decoration: none;
+  background-color: rgb(204, 105, 105);
+  color: white;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.AuditHistory table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.AuditHistory table thead th {
+  background-color: rgb(182, 131, 107);
+  padding: 8px;
+  justify-content: flex-end;
+}
+
+.AuditHistory table tbody td {
+  padding: 8px;
+}
+
+.AuditHistory table tr:nth-child(even) {
+  background-color: #e4dada; /* Alternate row color */
+}
+
+.AuditHistory table tr:hover {
+  background-color: #f0f0f0; /* Hover color */
+}
+
+.AuditHistory table td:first-child,
+.AuditHistory table th:first-child {
+  border-left: 1px solid #ddd; /* Left border for first column */
+}
+
+.AuditHistory table td:last-child,
+.AuditHistory table th:last-child {
+  border-right: 1px solid #ddd; /* Right border for last column */
+}
+.actionButton a {
+  text-decoration: none;
+  background-color: rgb(119, 65, 40);
+  color: white;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
