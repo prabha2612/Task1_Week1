@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import "./audit.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import toast from "react-hot-toast";
 
 const Audit = () => {
-  const [audits, setaudits] = useState();
+  const [audits, setaudits] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.get("/get api/");
-  //     setaudits(response.data);
-  // //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:4000/api/getaudit");
+      setaudits(response.data);
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   return (
     <div className="AuditHistory">
@@ -37,51 +38,22 @@ const Audit = () => {
           {audits.map((audit, index) => {
             return (
               <tr key={audit._id}>
-                <td>{audit._id}</td>
-                <td>{audit.date}</td>
-                <td>{audit.reviewer}</td>
+                <td>{index + 1}</td>
+                <td>{audit.auditDate}</td>
+                <td>{audit.reviewedby}</td>
                 <td>{audit.status}</td>
-                <td>{audit.section}</td>
+                <td>{audit.reviewedsection}</td>
                 <td>{audit.comments}</td>
-                <td>{audit.actionItems}</td>
+                <td>{audit.actionitem}</td>
                 <td className="actionButton">
                   <Link to={"/edit/" + audit._id}>
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <i className="fa-solid fa-pen-to-square"></i>
                   </Link>
                 </td>
               </tr>
             );
-          })}
-          <tr>
-            <td>1</td>
-            <td>2020-01-01</td>
-            <td>Promact</td>
-            <td>Pending</td>
-            <td>Section 1</td>
-            <td>Comments</td>
-            <td>Action Items</td>
-            <td className="actionButton">
-              {/* <button>Delete</button> */}
-              <Link to={"/edit"}>
-                <i class="fa-solid fa-pen-to-square"></i>
-              </Link>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>2020-01-01</td>
-            <td>Promact</td>
-            <td>Pending</td>
-            <td>Section 1</td>
-            <td>Comments</td>
-            <td>Action Items</td>
-            <td className="actionButton">
-              {/* <button>Delete</button> */}
-              <Link to={"/edit"}>
-                <i class="fa-solid fa-pen-to-square"></i>
-              </Link>
-            </td>
-          </tr>
+          })
+          }
         </tbody>
       </table>
     </div>

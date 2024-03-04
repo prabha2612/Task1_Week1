@@ -9,8 +9,8 @@ export const createaudit = async (req, res) => {
       return res.status(404).json({ msg: "Data not found!" });
     }
     const savedAudit = await auditData.save();
-    await sendEmail("Audit Created", "A new Audit is created",req.body);
-    res.status(200).json(savedAudit);
+    await sendEmail("Audit Created", "A new Audit is created", req.body);
+    res.status(200).json({ msg: "Audit created successfully" });
   } catch (error) {
     res.status(500).json({ Error: error });
   }
@@ -37,21 +37,23 @@ export const getOneaudit = async (req, res) => {
     }
     res.status(200).json(auditExist);
   } catch (error) {
-    res.status(500).json("Error: ", error);
+    res.status(500).json({error: error});
   }
-};
+}
 
 export const updateaudit = async (req, res) => {
   try {
     const id = req.params.id;
     const auditExist = await Audit.findById(id);
     if (!auditExist) {
-      return res.status(404).json({ msg: "Audit not found" });
+      return res.status(401).json({ msg: "Audit not found" });
     }
-    const updatedAudit = await Audit.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    await sendEmail("Audit Updated", "An Audit has been updated!",updatedAudit);
+    const updatedAudit = await Audit.findByIdAndUpdate(id, req.body, {new: true});
+    await sendEmail(
+      "Audit Updated",
+      "An Audit has been updated!",
+      updatedAudit
+    );
 
     res.status(200).json({ msg: "Audit Updated!" });
   } catch (error) {
@@ -75,9 +77,8 @@ export const updateaudit = async (req, res) => {
 //   }
 // };
 
-
-  export const downlaod = async (req, res) => {
-    const url = "http://localhost:4000/getaudit";
+export const downlaod = async (req, res) => {
+  const url = "http://localhost:4000/getaudit";
 
   try {
     const browser = await puppeteer.launch();
@@ -88,7 +89,10 @@ export const updateaudit = async (req, res) => {
     await browser.close();
 
     res.setHeader("Content-Type", "application/pdf");
-    res.setHeader("Content-Disposition", "attachment; filename=auditreport.pdf");
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=auditreport.pdf"
+    );
     res.send(pdfBuffer);
   } catch (error) {
     console.error("Error:", error);
@@ -110,9 +114,9 @@ const sendEmail = async (subject, text, data) => {
       ${JSON.stringify(data, null, 2)}
       
       Thanks and Regards,
-      Promact Infotech Pvt Ltd`
-  })
+      Promact Infotech Pvt Ltd`,
+    });
   } catch (error) {
     console.error("Error: ", error);
   }
-}
+};

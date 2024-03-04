@@ -19,25 +19,27 @@ const Add = () => {
   const inputhandler = (event) => {
     const { name, value } = event.target;
     setAudit({ ...audit, [name]: value });
-    console.log(audit);
+    // console.log(audit);
   };
 
-  // const submitHandler = (event) => {
-  //   event.preventDefault();
-  //   console.log(audit);
-  //   await axios.post("/creata api/",audit)
-  //   .then((response) => {
-  //     toast.success(response.data.msg, {positiion: "top-right"})
-  //     navigate("/")
-  //   }).catch((error) => {
-  //     console.log(error)
-  //   })
-  // };
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    console.log(audit);
+    await axios
+      .post("http://localhost:4000/api/createaudit", audit)
+      .then((response) => {
+        toast.success(response.data.msg, { position: "top-right" });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="addAudit">
       <Link to={"/"}>Back</Link>
       <h3>New Audit</h3>
-      <form onSubmit={handlesubmit}>
+      <form className="addAuditForm" onSubmit={submitHandler}>
         <div className="inputgroup">
           <label htmlFor="auditDate">Date of Audit: </label>
           <input

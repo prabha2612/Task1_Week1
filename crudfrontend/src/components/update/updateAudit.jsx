@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { response } from "express";
 import toast from "react-hot-toast";
 
 const Edit = () => {
@@ -14,7 +13,7 @@ const Edit = () => {
     actionitem: "",
   };
 
-  const { id } = useParams();
+  const {id} = useParams();
   const navigate = useNavigate();
   const [audit, setAudit] = useState(audits);
 
@@ -23,40 +22,41 @@ const Edit = () => {
     setAudit({ ...audit, [name]: value });
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/api/${id}")
-  //     .then((response) => {
-  //       setAudit(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [id]);
+  useEffect(() => {
+    axios.get(`http://localhost:4000/api/getoneaudit/${id}`).then((response) => {
+        setAudit(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
 
-// const submitfom = async(event)=>
-//     event.preventDefault();
-//     console.log(audit);
-//     await axios.put('http://update api/${id}',audit)
-//     .then((response) => {
-//       toast.success(response.data.msg, {positiion: "top-right"})
-//       navigate("/")
-//     }).catch((error) => { 
-//       console.log(error)
-//     })
+  const submitform = async (event) => {
+    event.preventDefault();
+    console.log(audit);
+    await axios
+      .patch(`http://localhost:4000/api/updateaudit/${id}`, audit)
+      .then((response) => {
+        toast.success(response.data.msg, { positiion: "top-right" });
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
       <h3>Edit Audit History</h3>
       <Link to="/">Dashboard</Link>
-      <form onSubmit={submitfom}>
+      <form onSubmit={submitform}>
         <div className="inputgroup">
           <label htmlFor="auditDate">Date of Audit: </label>
           <input
             type="date"
-            // id="auditDate"
-            // name="auditDate"
-            // autoComplete="off"
+            id="auditDate"
+            name="auditDate"
+            autoComplete="off"
             value={audit.auditDate}
             placeholder="Date of Auidt:"
             onChange={inputchangehandler}
@@ -66,9 +66,9 @@ const Edit = () => {
           <label htmlFor="reviewedby">Reviewed by: </label>
           <input
             type="text"
-            // id="reviewedby"
-            // name="reviewedby"
-            // autoComplete="off"
+            id="reviewedby"
+            name="reviewedby"
+            autoComplete="off"
             value={audit.reviewedby}
             placeholder="Reviewed by:"
             onChange={inputchangehandler}
@@ -78,9 +78,9 @@ const Edit = () => {
           <label htmlFor="status">Status: </label>
           <input
             type="text"
-            // id="status"
-            // name="status"
-            // autoComplete="off"
+            id="status"
+            name="status"
+            autoComplete="off"
             value={audit.status}
             placeholder="Status:"
             onChange={inputchangehandler}
@@ -90,9 +90,9 @@ const Edit = () => {
           <label htmlFor="reviewedsection">Reviewed Section: </label>
           <input
             type="text"
-            // id="reviewedsection"
-            // name="reviewedsection"
-            // autoComplete="off"
+            id="reviewedsection"
+            name="reviewedsection"
+            autoComplete="off"
             value={audit.reviewedsection}
             placeholder="Reviewed Section:"
             onChange={inputchangehandler}
@@ -102,9 +102,9 @@ const Edit = () => {
           <label htmlFor="comments">Comments/Queries: </label>
           <input
             type="text"
-            // id="comments"
-            // name="comments"
-            // autoComplete="off"
+            id="comments"
+            name="comments"
+            autoComplete="off"
             value={audit.comments}
             placeholder="Comments/Queries:"
             onChange={inputchangehandler}
@@ -114,9 +114,9 @@ const Edit = () => {
           <label htmlFor="actionitem">Action Item: </label>
           <input
             type="text"
-            // id="actionitem"
-            // name="actionitem"
-            // autoComplete="off"
+            id="actionitem"
+            name="actionitem"
+            autoComplete="off"
             value={audit.actionitem}
             placeholder="Action Item:"
             onChange={inputchangehandler}
