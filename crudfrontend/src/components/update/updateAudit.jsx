@@ -23,27 +23,27 @@ const Edit = () => {
     setAudit({ ...audit, [name]: value });
   };
 
-  useEffect(() => {
-    axios
-      .get("/api/${id}")
-      .then((response) => {
-        setAudit(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/${id}")
+  //     .then((response) => {
+  //       setAudit(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [id]);
 
-const submitfom = async(event)=>
-    event.preventDefault();
-    console.log(audit);
-    await axios.put('http://update api/${id}',audit)
-    .then((response) => {
-      toast.success(response.data.msg, {positiion: "top-right"})
-      navigate("/")
-    }).catch((error) => { 
-      console.log(error)
-    })
+// const submitfom = async(event)=>
+//     event.preventDefault();
+//     console.log(audit);
+//     await axios.put('http://update api/${id}',audit)
+//     .then((response) => {
+//       toast.success(response.data.msg, {positiion: "top-right"})
+//       navigate("/")
+//     }).catch((error) => { 
+//       console.log(error)
+//     })
 
   return (
     <div>

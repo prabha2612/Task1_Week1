@@ -1,13 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
-import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
+import nodemailer from "nodemailer";
+import puppeteer from "puppeteer";
 import route from "./routes/auditroute.js";
 
+
 const app = express();
-app.use(bodyParser.json());
-app.use(cors);
+app.use(express.json());
+app.use(cors());
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3500;
@@ -27,3 +30,6 @@ mongoose
   });
 
 app.use("/api", route);
+
+//Hello, 
+// I have completed implementing download and email notification features for the CRUD operations but I still have a few left which I'll try to complete as soon as possible but I'm not sure I'll be able to d them before deadline. I request you to kindly consider. 

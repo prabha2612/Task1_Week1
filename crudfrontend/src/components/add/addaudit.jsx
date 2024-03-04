@@ -22,17 +22,17 @@ const Add = () => {
     console.log(audit);
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    console.log(audit);
-    await axios.post("/creata api/",audit)
-    .then((response) => {
-      toast.success(response.data.msg, {positiion: "top-right"})
-      navigate("/")
-    }).catch((error) => {
-      console.log(error)
-    })
-  };
+  // const submitHandler = (event) => {
+  //   event.preventDefault();
+  //   console.log(audit);
+  //   await axios.post("/creata api/",audit)
+  //   .then((response) => {
+  //     toast.success(response.data.msg, {positiion: "top-right"})
+  //     navigate("/")
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   })
+  // };
   return (
     <div className="addAudit">
       <Link to={"/"}>Back</Link>

@@ -6,14 +6,14 @@ import axios from "axios";
 const Audit = () => {
   const [audits, setaudits] = useState();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("/get api/");
-      setaudits(response.data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get("/get api/");
+  //     setaudits(response.data);
+  // //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <div className="AuditHistory">
