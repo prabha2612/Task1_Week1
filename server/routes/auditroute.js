@@ -1,13 +1,13 @@
 import express from "express";
 import { createaudit, downlaod, getOneaudit, getaudit, updateaudit } from "../controller/auditcontroller.js";
 
-const route = express.Router();
+const auditroute = express.Router();
 
-route.post("/createaudit", createaudit);
-route.get("/getaudit", getaudit);
-route.get("/getoneaudit/:id", getOneaudit);
-route.patch("/updateaudit/:id", updateaudit);
-// route.delete("/deleteaudit/:id", deleteaudit);
-route.post("/downloadpdf",downlaod);
+auditroute.post("/createaudit", createaudit);
+auditroute.get("/getaudit", getaudit);
+auditroute.get("/getoneaudit/:id", getOneaudit);
+auditroute.patch("/updateaudit/:id", updateaudit);
+// auditroute.delete("/deleteaudit/:id", deleteaudit);
+auditroute.post("/downloadpdf",downlaod);
 
-export default route;
+export default auditroute;

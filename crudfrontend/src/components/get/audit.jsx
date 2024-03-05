@@ -2,14 +2,25 @@ import React, { useEffect, useState } from "react";
 import "./audit.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AddAuditModal from "../add/addaudit.jsx";
 // import toast from "react-hot-toast";
 
 const Audit = () => {
   const [audits, setaudits] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () =>{
+    setIsModalOpen(true);
+  }
+
+  const closeModal = () =>{
+    setIsModalOpen(false);
+  }
+
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:4000/api/getaudit");
+      const response = await axios.get("http://localhost:4000/api/audit/getaudit");
       setaudits(response.data);
     };
 
@@ -18,9 +29,13 @@ const Audit = () => {
 
   return (
     <div className="AuditHistory">
-      <Link to={"/add"} className="addButton">
+      {/* <Link to={"/add"} className="addButton">
         Add audit
-      </Link>
+      </Link> */}
+       <button onClick={openModal} className="addButton">
+        Add audit
+      </button>
+      <AddAuditModal isOpen={isModalOpen} onClose = {closeModal} />
       <table border={0} cellPadding={10} cellSpacing={0}>
         <thead>
           <tr>

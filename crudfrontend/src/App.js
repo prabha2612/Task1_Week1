@@ -3,10 +3,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Audit from "./components/get/audit";
 import Add from "./components/add/addaudit";
 import Edit from "./components/update/updateAudit";
-import Sidemenu from "./components/sidemenu/sidemenu.js";
-import Appheader from "./components/Header/header.js";
-import Content from "./components/Content/Pagecontent.js";
-import { Space } from "antd";
+// import Sidemenu from "./components/sidemenu/sidemenu.js";
+// import Appheader from "./components/Header/header.js";
+// import Content from "./components/Content/Pagecontent.js";
+// import { Space } from "antd";
 
 function App() {
   const route = createBrowserRouter([
@@ -25,14 +25,14 @@ function App() {
   ]);
   return (
     <div className="App">
-      <Appheader />
+      {/* <Appheader />
       <Space className="SideMenuandPageContent"> 
         <Sidemenu>
-          <Content>
+          <Content> */}
             <RouterProvider router={route}></RouterProvider>
-          </Content>
+          {/* </Content>
         </Sidemenu>
-      </Space>
+      </Space> */}
     </div>
   );
 }

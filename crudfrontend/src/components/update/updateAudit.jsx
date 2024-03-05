@@ -23,7 +23,7 @@ const Edit = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/getoneaudit/${id}`).then((response) => {
+    axios.get(`http://localhost:4000/api/auidt/getoneaudit/${id}`).then((response) => {
         setAudit(response.data);
       })
       .catch((error) => {
@@ -35,7 +35,7 @@ const Edit = () => {
     event.preventDefault();
     console.log(audit);
     await axios
-      .patch(`http://localhost:4000/api/updateaudit/${id}`, audit)
+      .patch(`http://localhost:4000/api/audit/updateaudit/${id}`, audit)
       .then((response) => {
         toast.success(response.data.msg, { positiion: "top-right" });
         navigate("/");

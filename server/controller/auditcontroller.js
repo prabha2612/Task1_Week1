@@ -20,7 +20,7 @@ export const getaudit = async (req, res) => {
   try {
     const auditData = await Audit.find();
     if (!auditData) {
-      return res.status(404).json({ msg: "User data npt found" });
+      return res.status(404).json({ msg: "Data not found" });
     }
     res.status(200).json(auditData);
   } catch (error) {

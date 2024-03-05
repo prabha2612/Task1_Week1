@@ -5,6 +5,10 @@ import cors from "cors";
 // import nodemailer from "nodemailer";
 // import puppeteer from "puppeteer";
 import route from "./routes/auditroute.js";
+import auditroute from "./routes/auditroute.js";
+import budgetroute from "./routes/budgetroute.js";
+import versionroute from "./routes/versionroute.js";
+import descriptionroute from "./routes/projectdescriptionroute.js";
 
 const app = express();
 app.use(express.json());
@@ -32,4 +36,7 @@ mongoose
     console.error(err);
   });
 
-app.use("/api", route);
+app.use("/api/audit", auditroute);
+app.use("/api/budget", budgetroute);
+app.use("/api/version", versionroute);
+app.use("/api/description", descriptionroute);
