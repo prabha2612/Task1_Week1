@@ -35,7 +35,9 @@ const Audit = () => {
        <button onClick={openModal} className="addButton">
         Add audit
       </button>
+    {isModalOpen && 
       <AddAuditModal isOpen={isModalOpen} onClose = {closeModal} />
+    }
       <table border={0} cellPadding={10} cellSpacing={0}>
         <thead>
           <tr>

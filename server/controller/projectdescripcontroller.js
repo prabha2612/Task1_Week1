@@ -9,7 +9,7 @@ export const createdescription = async (req, res) => {
       return res.status(404).json({ msg: "Data not found!" });
     }
     const saveddescription = await descriptionData.save();
-    await sendEmail("Project Description Created", "A new Project Descriptionis created", req.body);
+    await sendEmail("Project Description Created", "A new Project Description is created", req.body);
     res.status(200).json({ msg: "Project Description created successfully" });
   } catch (error) {
     res.status(500).json({ Error: error });
@@ -68,7 +68,7 @@ export const deletedescription = async (req, res) => {
     if (!descriptionExist) {
       return res.status(404).json({ msg: "Project Description not found!" });
     }
-    await VersionHistory.findByIdAndDelete(id);
+    await ProjectDescription.findByIdAndDelete(id);
     await sendEmail("Project Description Deleted", "Project Description was deleted", descriptionExist);
 
     res.status(200).json({ msg: "Project Description deleted!" });
@@ -108,7 +108,7 @@ const sendEmail = async (subject, text, data) => {
       subject: subject,
       text: `Hello [Stakeholder Name],
 
-      Please note that Version History has been completed and here is the Version summary:
+      Please note that Project Description has been completed and here is the Version summary:
       
       Budget Data:
       ${JSON.stringify(data, null, 2)}
