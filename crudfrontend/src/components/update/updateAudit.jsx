@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Edit = () => {
+const Editaudit = () => {
   const audits = {
     auditDate: "",
     reviewedby: "",
@@ -13,7 +13,7 @@ const Edit = () => {
     actionitem: "",
   };
 
-  const {id} = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [audit, setAudit] = useState(audits);
 
@@ -23,7 +23,9 @@ const Edit = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/api/auidt/getoneaudit/${id}`).then((response) => {
+    axios
+      .get(`http://localhost:4000/api/auidt/getoneaudit/${id}`)
+      .then((response) => {
         setAudit(response.data);
       })
       .catch((error) => {
@@ -130,4 +132,6 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export default Editaudit;
+
+

@@ -1,0 +1,53 @@
+/* AddAuditModal.css */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Ensure the modal is on top */
+}
+
+.modal.is-active {
+  display: block;
+}
+
+.modal-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px; /* Adjust the width as needed */
+}
+
+.modal-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-card-body {
+  padding-top: 20px;
+}
+
+.inputgroup {
+  margin-bottom: 10px;
+}
+
+/* Styling for close button */
+.delete {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.delete:hover {
+  color: #000;
+}

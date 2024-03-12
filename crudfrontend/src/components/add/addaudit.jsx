@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import "./addmodal.css";
 
 const AddAuditModal = ({ isOpen, onClose }) => {
   const [audit, setAudit] = useState({

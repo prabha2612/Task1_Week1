@@ -1,39 +1,26 @@
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Audit from "./components/get/audit";
-import Add from "./components/add/addaudit";
-import Edit from "./components/update/updateAudit";
+import { Route, Routes } from "react-router-dom";
 import Sidemenu from "./components/sidemenu/sidemenu.js";
 import Appheader from "./components/Header/header.js";
 import Content from "./components/Content/Pagecontent.js";
 import { Space } from "antd";
+import Editaudit from "./components/update/updateAudit";
+import Navbar from "./components/navBar.js";
 
 function App() {
-//   const route = createBrowserRouter([
-//     {        
-//       path: "/",
-//       element: <Audit />,
-//     },
-//     {
-//       path: "/add",
-//       element: <Add />,
-//     },
-//     {
-//       path: "/edit/:id",
-//       element: <Edit />,
-//     },
-//   ]);
   return (
     <div className="App">
       <Appheader />
-      <Space className="SideMenuandPageContent"> 
-        <Sidemenu>
-          <Content>
-            <Audit/>
-            {/* <RouterProvider router={route}></RouterProvider> */}
-          </Content>
-        </Sidemenu>
-      </Space>
+      <div className="NavbarContainer">
+  <Navbar />
+</div>
+      {/* <Space> */}
+        <Sidemenu className="SideMenu" />
+        {/* <Routes>
+          <Route path="/" element={<Content />} />
+          <Route path="/editaudit/:id" element={<Editaudit />} />
+        </Routes> */}
+      {/* </Space> */}
     </div>
   );
 }

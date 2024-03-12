@@ -18,7 +18,7 @@ body {
 }
 
 .Appheader{
-  height:  50px;
+  height: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,9 +26,38 @@ body {
   border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 
-.SideMenuandPageContent {
+/* .SideMenuandPageContent {
   display: flex;
   flex: 1;
   justify-content: flex-start;
   align-content: flex-start;
+} */
+
+.SideMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  width: 200px;
+  min-height: 100vh;
+  background-color: rgb(182, 131, 107);
 }
+
+.NavbarContainer {
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 220px;
+}
+
+/* .pageContent {
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: left; */
+  /* align-items: center; */
+  /* width: 100%;
+  /* height: 100vh; */
+  /* background-color: rgb(204, 180, 180);
+  color: black;
+} */

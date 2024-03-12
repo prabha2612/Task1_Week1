@@ -63,7 +63,7 @@ const Audit = () => {
                 <td>{audit.comments}</td>
                 <td>{audit.actionitem}</td>
                 <td className="actionButton">
-                  <Link to={"/edit/" + audit._id}>
+                  <Link to={"/editaudit/" + audit._id}>
                     <i className="fa-solid fa-pen-to-square"></i>
                   </Link>
                 </td>
