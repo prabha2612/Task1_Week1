@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import "./addmodal.css";
 
-const AddAuditModal = ({ isOpen, onClose }) => {
+const AddAuditModal = ({ closeModal }) => {
   const [audit, setAudit] = useState({
     auditDate: "",
     reviewedby: "",
@@ -27,19 +27,28 @@ const AddAuditModal = ({ isOpen, onClose }) => {
         audit
       );
       toast.success(response.data.msg, { position: "top-right" });
-      onClose(); // Close the modal after successful submission
+      closeModal(); // Close the modal after successful submission
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className={`modal ${isOpen ? "is-active" : ""}`}>
-      <div className="modal-background" onClick={onClose}></div>
+    <div
+      className="modal-container"
+      onClick={(e) => {
+        if (e.target.className === "modal-container") closeModal();
+      }}
+    >
+      {/* <div className="modal-background" onClick={onClose}></div> */}
       <div className="modal-card">
         <header className="modal-card-head">
           <p className="modal-card-title">New Audit</p>
-          <button className="delete" onClick={onClose} aria-label="close"></button>
+          {/* <button
+            className="delete"
+            onClick={onClose}
+            aria-label="close"
+          ></button> */}
         </header>
         <section className="modal-card-body">
           <form onSubmit={submitHandler}>

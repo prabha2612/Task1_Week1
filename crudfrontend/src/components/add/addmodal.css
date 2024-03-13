@@ -1,6 +1,6 @@
 /* AddAuditModal.css */
-.modal {
-  display: none;
+.modal-container {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -8,11 +8,13 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
   z-index: 1000; /* Ensure the modal is on top */
+  align-items: center;
+  justify-content: center;
 }
 
-.modal.is-active {
+/* .modal-container {
   display: block;
-}
+} */
 
 .modal-card {
   position: absolute;
@@ -22,7 +24,7 @@
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  width: 400px; /* Adjust the width as needed */
+  width: 400px;
 }
 
 .modal-card-head {
@@ -39,7 +41,6 @@
   margin-bottom: 10px;
 }
 
-/* Styling for close button */
 .delete {
   cursor: pointer;
   border: none;

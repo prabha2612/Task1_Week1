@@ -1,14 +1,27 @@
-// import { BrowserRouter, Routes, Route} from "react-router-dom";
-// import dashboard from "../Dashboard/dashboard.js";
+import { Routes, Route} from "react-router-dom";
+import Audit from "../get/audit.jsx";
+import Budget from "../get/projectbudget.jsx";
+import Editaudit from "../update/updateAudit.jsx";
 
-// function AppRoutes() {
-//     return (
-//         // <BrowserRouter>
-//             <Routes>
-//                 <Route path="/" element={Dashboard}></Route>
-//             </Routes>
-//         // </BrowserRouter>
-//     )
-// }
+function AppRoutes() {
+    return (
+      // <BrowserRouter>
+      <Routes>
+        <Route path="/dashboard">
+          <Route index element={<Audit />} />
+          <Route path="editaudit/:id" element={<Editaudit />} />
+        </Route>
+        {/* <Route path="/AuditHistory">
+          <Route index element={<Audit />} />
+          <Route path="editaudit/:id" element={<Editaudit />} />
+        </Route>
+        <Route path="/dashboard">
+          <Route index element={<Audit />} />
+          <Route path="editaudit/:id" element={<Editaudit />} />
+        </Route> */}
+      </Routes>
+      // </BrowserRouter>
+    );
+}
 
-// export default AppRoutes
+export default AppRoutes;

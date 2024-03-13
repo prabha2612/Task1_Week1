@@ -1,10 +1,12 @@
-import { Space, Typography } from "antd";
+import { Typography } from "antd";
 
 function Appheader() {
-  return <div className="Appheader">
-    {/* <Image width={40} src={}></Image> */}
-    <Typography.Title>Customer Success Platform</Typography.Title>
-  </div>;
+  return (
+    <div className="Appheader">
+      <Typography.Title>Customer Success Platform</Typography.Title>
+      {/* <h1>Customer Success Platform</h1> */}
+    </div>
+  );
 }
 
 export default Appheader;

@@ -3,41 +3,61 @@ import "./audit.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AddAuditModal from "../add/addaudit.jsx";
+import Modal from "./Modal.jsx";
+import Editaudit from "../update/updateAudit.jsx";
 // import toast from "react-hot-toast";
 
 const Audit = () => {
   const [audits, setaudits] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAudit, setSelectedAudit] = useState(null);
+  // const openModaladd = () =>{
+  //   setIsModalOpen(true);
+  // }
 
-  const openModal = () =>{
-    setIsModalOpen(true);
-  }
-
-  const closeModal = () =>{
-    setIsModalOpen(false);
-  }
-
+  // const closeModaladd = () =>{
+  //   setIsModalOpen(false);
+  // }
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:4000/api/audit/getaudit");
+      const response = await axios.get(
+        "http://localhost:4000/api/audit/getaudit"
+      );
       setaudits(response.data);
     };
 
     fetchData();
   }, []);
 
+  const openModal = (audit) => {
+    setSelectedAudit(audit);
+  };
+
+  const closeModal = () => {
+    setSelectedAudit(null);
+  };
+
   return (
     <div className="AuditHistory">
       {/* <Link to={"/add"} className="addButton">
         Add audit
       </Link> */}
-       <button onClick={openModal} className="addButton">
+      <button
+        onClick={() => {
+          setIsModalOpen(true);
+        }}
+        className="addButton"
+      >
         Add audit
       </button>
-    {isModalOpen && 
-      <AddAuditModal isOpen={isModalOpen} onClose = {closeModal} />
-    }
+      {isModalOpen && (
+        <AddAuditModal
+          closeModal={() => {
+            setIsModalOpen(false);
+          }}
+        />
+      )}
       <table border={0} cellPadding={10} cellSpacing={0}>
         <thead>
           <tr>
@@ -69,8 +89,7 @@ const Audit = () => {
                 </td>
               </tr>
             );
-          })
-          }
+          })}
         </tbody>
       </table>
     </div>
