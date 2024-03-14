@@ -1,13 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap");
-
 * {
-  font-family: "Kode Mono", monospace;
+  font-family: "Roboto", "Helvetica Neue";
   padding: 0;
   margin: 0;
 }
 
 body {
-  background-color: floralwhite;
+  background-color: #f5f7f9;
 }
 
 .App {
@@ -15,16 +13,6 @@ body {
   flex-direction: column;
   height: 100vh;
 }
-
-.Appheader {
-  height: 50px;
-  /* display: flex; */
-  /* justify-content: space-between; */
-  /* align-items: center;s */
-  padding: 2px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-}
-
 .content-container {
   display: flex;
   flex: 1;
@@ -32,10 +20,10 @@ body {
 
 .main-content {
   flex: 1;
-  overflow-y: auto; /* Add scrollbar when content exceeds viewport */
+  overflow-y: auto;
 }
 
-.modal {
+/* .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -51,4 +39,4 @@ body {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-}
+} */

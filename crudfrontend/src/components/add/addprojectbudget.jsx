@@ -1,10 +1,9 @@
-// AddAuditModal.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "./addmodal.css";
 
-const Addprojectbudget = ({ isOpen, onClose }) => {
+const AddprojectBudget = ({ closeModal }) => {
   const [budget, setBudget] = useState({
     projecttype: "",
     Duration: "",
@@ -24,45 +23,44 @@ const Addprojectbudget = ({ isOpen, onClose }) => {
         budget
       );
       toast.success(response.data.msg, { position: "top-right" });
-      onClose(); // Close the modal after successful submission
+      closeModal(); // Close the modal after successful submission
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className={`modal ${isOpen ? "is-active" : ""}`}>
-      <div className="modal-background" onClick={onClose}></div>
+    <div
+      className="modal-container"
+      onClick={(e) => {
+        if (e.target.className === "modal-container") closeModal();
+      }}
+    >
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">New Audit</p>
-          <button
-            className="delete"
-            onClick={onClose}
-            aria-label="close"
-          ></button>
+          <p className="modal-card-title">New Budget</p>
         </header>
         <section className="modal-card-body">
           <form onSubmit={submitHandler}>
             <div className="inputgroup">
-              <label htmlFor="auditDate">Project Type: </label>
+              <label htmlFor="projecttype">Project Type: </label>
               <input
                 type="text"
                 id="projecttype"
                 name="projecttype"
                 autoComplete="off"
-                placeholder="Project type:"
+                placeholder="project type:"
                 onChange={inputhandler}
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="Duration">Duration: </label>
+              <label htmlFor="Duration">Duration : </label>
               <input
                 type="number"
                 id="Duration"
                 name="Duration"
                 autoComplete="off"
-                placeholder="Duration"
+                placeholder="Duration:"
                 onChange={inputhandler}
               />
             </div>
@@ -73,7 +71,7 @@ const Addprojectbudget = ({ isOpen, onClose }) => {
                 id="budgetedhours"
                 name="budgetedhours"
                 autoComplete="off"
-                placeholder="Budgeted Hours:"
+                placeholder="Budgeted hours:"
                 onChange={inputhandler}
               />
             </div>
@@ -87,4 +85,4 @@ const Addprojectbudget = ({ isOpen, onClose }) => {
   );
 };
 
-export default Addprojectbudget;
+export default AddprojectBudget;

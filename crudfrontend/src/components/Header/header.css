@@ -1,0 +1,15 @@
+.Appheader {
+  background-color: #0173eb;
+  color: #ffffff;
+  height: 70px;
+  padding: 2px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}

@@ -1,10 +1,15 @@
 import React from "react";
 import "./sideMenu.css";
-import { Sidemenudata } from "./sidemenudata.js";
-import { useNavigate } from "react-router-dom";
+import { Sidemenudata } from "./sidemenudata.jsx";
+// import { useNavigate } from "react-router-dom";
 
 const SideMenu = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  // const handleItemClick = (url) => {
+  //   navigate(url);
+  // };
+
   return (
     <div className="SideMenu">
       <ul className="SideMenuList">
@@ -13,9 +18,9 @@ const SideMenu = () => {
             <li
               key={key}
               className="row"
-              id={window.location.pathname === val.link ? "active" : ""}
+              id={window.location.pathname === val.url ? "active" : ""}
               onClick={() => {
-                navigate("/dashboard");
+                window.location.pathname = val.url;
               }}
             >
               <div id="icon">{val.icon}</div>

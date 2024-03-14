@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./audit.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Addprojectbudget from "../add/addprojectbudget.jsx";
 import toast from "react-hot-toast";
+import AddVersion from "../add/addVersionhistory.jsx";
 
-const Budget = () => {
-  const [budgets, setbudgets] = useState([]);
+const Version = () => {
+  const [versions, setVersions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -14,18 +14,18 @@ const Budget = () => {
       const response = await axios.get(
         "http://localhost:4000/api/budget/getbudget"
       );
-      setbudgets(response.data);
+      setVersions(response.data);
     };
 
     fetchData();
   }, []);
 
-  const deleteBudget = async (budgetId) => {
+  const deleteVersion = async (versionId) => {
     await axios
-      .delete(`http://localhost:4000/api/budget/deletebudget/${budgetId}`)
+      .delete(`http://localhost:4000/api/version/deleteversion/${versionId}`)
       .then((respones) => {
-        setbudgets((prevBudget) =>
-          prevBudget.filter((budget) => budget._id !== budgetId)
+        setVersions((prevVersion) =>
+          prevVersion.filter((version) => version._id !== versionId)
         );
         toast.success(respones.data.msg, { position: "top-right" });
       })
@@ -41,10 +41,10 @@ const Budget = () => {
         }}
         className="addButton"
       >
-        Add ProjectBudget
+        Add Version
       </button>
       {isModalOpen && (
-        <Addprojectbudget
+        <AddVersion
           closeModal={() => {
             setIsModalOpen(false);
           }}
@@ -53,26 +53,33 @@ const Budget = () => {
       <table border={0} cellPadding={10} cellSpacing={0}>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Project Type  </th>
-            <th>Duration</th>
-            <th>Budgeted Hours</th>
-            <th>Action</th>
+            <th>Version</th>
+            <th>Type</th>
+            <th>Change</th>
+            <th>Change Reason</th>
+            <th>Created By</th>
+            <th>Revision Date</th>
+            <th>Approval Date</th>
+            <th>Approved Date</th>
           </tr>
         </thead>
         <tbody>
-          {budgets.map((budget, index) => {
+          {versions.map((version, index) => {
             return (
-              <tr key={budget._id}>
+              <tr key={version._id}>
                 <td>{index + 1}</td>
-                <td>{budget.projecttype}</td>
-                <td>{budget.Duration}</td>
-                <td>{budget.budgetedhours}</td>
+                <td>{version.versionType}</td>
+                <td>{version.change}</td>
+                <td>{version.changeReason}</td>
+                <td>{version.createdBy}</td>
+                <td>{version.revisionDate}</td>
+                <td>{version.approvalDate}</td>
+                <td>{version.approvedBy}</td>
                 <td className="actionButton">
-                  <button onClick={() => deleteBudget(budget._id)}>
+                  <button onClick={() => deleteVersion(version._id)}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
-                  <Link to={"/budget/editbudget/" + budget._id}>
+                  <Link to={"/version/editversion/" + version._id}>
                     <i className="fa-solid fa-pen-to-square"></i>
                   </Link>
                 </td>
@@ -85,4 +92,4 @@ const Budget = () => {
   );
 };
 
-export default Budget;
+export default Version;

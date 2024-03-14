@@ -3,21 +3,15 @@ import "./audit.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AddAuditModal from "../add/addaudit.jsx";
-import Modal from "./Modal.jsx";
-import Editaudit from "../update/updateAudit.jsx";
+// import Modal from "./Modal.jsx";
+// import Editaudit from "../update/updateAudit.jsx";
 // import toast from "react-hot-toast";
 
 const Audit = () => {
   const [audits, setaudits] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedAudit, setSelectedAudit] = useState(null);
-  // const openModaladd = () =>{
-  //   setIsModalOpen(true);
-  // }
 
-  // const closeModaladd = () =>{
-  //   setIsModalOpen(false);
-  // }
+  // const [selectedAudit, setSelectedAudit] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,19 +24,16 @@ const Audit = () => {
     fetchData();
   }, []);
 
-  const openModal = (audit) => {
-    setSelectedAudit(audit);
-  };
+  // const openModal = (audit) => {
+  //   setSelectedAudit(audit);
+  // };
 
-  const closeModal = () => {
-    setSelectedAudit(null);
-  };
+  // const closeModal = () => {
+  //   setSelectedAudit(null);
+  // };
 
   return (
     <div className="AuditHistory">
-      {/* <Link to={"/add"} className="addButton">
-        Add audit
-      </Link> */}
       <button
         onClick={() => {
           setIsModalOpen(true);
@@ -83,7 +74,7 @@ const Audit = () => {
                 <td>{audit.comments}</td>
                 <td>{audit.actionitem}</td>
                 <td className="actionButton">
-                  <Link to={"/editaudit/" + audit._id}>
+                  <Link to={`/editaudit/` + audit._id}>
                     <i className="fa-solid fa-pen-to-square"></i>
                   </Link>
                 </td>

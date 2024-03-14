@@ -3,29 +3,28 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import "./addmodal.css";
 
-const AddAuditModal = ({ closeModal }) => {
-  const today = new Date().toISOString().split("T")[0];
-
-  const [audit, setAudit] = useState({
-    auditDate: today,
-    reviewedby: "",
-    status: "",
-    reviewedsection: "",
-    comments: "",
-    actionitem: "",
+const AddVersion = ({ closeModal }) => {
+  const [version, setVersion] = useState({
+    versionType: "",
+    change: "",
+    changeReason: "",
+    createdBy: "",
+    revisionDate: "",
+    approvalDate: "",
+    approvedBy: "",
   });
 
   const inputhandler = (event) => {
     const { name, value } = event.target;
-    setAudit({ ...audit, [name]: value });
+    setVersion({ ...version, [name]: value });
   };
 
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/audit/createaudit",
-        audit
+        "http://localhost:4000/api/version/createversion",
+        version
       );
       toast.success(response.data.msg, { position: "top-right" });
       closeModal(); // Close the modal after successful submission
@@ -43,79 +42,78 @@ const AddAuditModal = ({ closeModal }) => {
     >
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">New Audit</p>
+          <p className="modal-card-title">New Budget</p>
         </header>
         <section className="modal-card-body">
           <form onSubmit={submitHandler}>
             <div className="inputgroup">
-              <label htmlFor="auditDate">Date of Audit: </label>
+              <label htmlFor="versionType">Type: </label>
+              <input
+                type="text"
+                id="versionType"
+                name="versionType"
+                autoComplete="off"
+                placeholder="version type"
+                onChange={inputhandler}
+              />
+            </div>
+            <div className="inputgroup">
+              <label htmlFor="change">Change : </label>
+              <input
+                type="text"
+                id="change"
+                name="change"
+                autoComplete="off"
+                placeholder="change"
+                onChange={inputhandler}
+              />
+            </div>
+            <div className="inputgroup">
+              <label htmlFor="changeReason">Budgeted Hours: </label>
+              <input
+                type="text"
+                id="changeReason"
+                name="changeReason"
+                autoComplete="off"
+                placeholder="change Reason"
+                onChange={inputhandler}
+              />
+            </div>
+            <div className="inputgroup">
+              <label htmlFor="revisionDate">Budgeted Hours: </label>
               <input
                 type="date"
-                value={audit.auditDate}
-                max={today}
-                id="auditDate"
-                name="auditDate"
+                id="revisionDate"
+                name="revisionDate"
                 autoComplete="off"
+                placeholder="Revision Date"
                 onChange={inputhandler}
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="reviewedby">Reviewed by: </label>
+              <label htmlFor="approvalDate">Budgeted Hours: </label>
+              <input
+                type="date"
+                id="approvalDate"
+                name="approvalDate"
+                autoComplete="off"
+                placeholder="Approval Date"
+                onChange={inputhandler}
+              />
+            </div>
+            <div className="inputgroup">
+              <label htmlFor="approvedBy">Budgeted Hours: </label>
               <input
                 type="text"
-                id="reviewedby"
-                name="reviewedby"
+                id="approvedBy"
+                name="approvedBy"
                 autoComplete="off"
-                placeholder="Reviewed by:"
+                placeholder="Approved By"
                 onChange={inputhandler}
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="status">Status: </label>
-              <input
-                type="text"
-                id="status"
-                name="status"
-                autoComplete="off"
-                placeholder="Status:"
-                onChange={inputhandler}
-              />
-            </div>
-            <div className="inputgroup">
-              <label htmlFor="reviewedsection">Reviewed Section: </label>
-              <input
-                type="text"
-                id="reviewedsection"
-                name="reviewedsection"
-                autoComplete="off"
-                placeholder="Reviewed Section:"
-                onChange={inputhandler}
-              />
-            </div>
-            <div className="inputgroup">
-              <label htmlFor="comments">Comments/Queries: </label>
-              <input
-                type="text"
-                id="comments"
-                name="comments"
-                autoComplete="off"
-                placeholder="Comments/Queries:"
-                onChange={inputhandler}
-              />
-            </div>
-            <div className="inputgroup">
-              <label htmlFor="actionitem">Action Item: </label>
-              <input
-                type="text"
-                id="actionitem"
-                name="actionitem"
-                autoComplete="off"
-                placeholder="Action Item:"
-                onChange={inputhandler}
-              />
-            </div>
-            <div className="inputgroup">
-              <button type="submit">Add Audit</button>
+              <button type="submit">Add Version</button>
             </div>
           </form>
         </section>
@@ -124,4 +122,4 @@ const AddAuditModal = ({ closeModal }) => {
   );
 };
 
-export default AddAuditModal;
+export default AddVersion;

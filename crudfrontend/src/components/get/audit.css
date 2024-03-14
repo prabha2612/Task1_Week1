@@ -9,7 +9,7 @@
 }
 .addButton {
   text-decoration: none;
-  background-color: rgb(204, 105, 105);
+  background-color: #0173eb;
   color: white;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
   border-radius: 5px;
@@ -24,9 +24,10 @@
 }
 
 .AuditHistory table thead th {
-  background-color: rgb(182, 131, 107);
+  background-color: #0173eb;
   padding: 8px;
   justify-content: flex-end;
+  color: #f0f0f0;
 }
 
 .AuditHistory table tbody td {
@@ -34,7 +35,7 @@
 }
 
 .AuditHistory table tr:nth-child(even) {
-  background-color: #e4dada; /* Alternate row color */
+  background-color: #e6e9ec; /* Alternate row color */
 }
 
 .AuditHistory table tr:hover {
@@ -43,7 +44,7 @@
 
 .AuditHistory table td:first-child,
 .AuditHistory table th:first-child {
-  border-left: 1px solid #ddd; /* Left border for first column */
+  border-left: 1px solid #fffffc; /* Left border for first column */
 }
 
 .AuditHistory table td:last-child,
@@ -52,7 +53,7 @@
 }
 .actionButton a {
   text-decoration: none;
-  background-color: rgb(119, 65, 40);
+  background-color: #48515a;
   color: white;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.065);
   border-radius: 5px;

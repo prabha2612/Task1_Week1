@@ -1,7 +1,7 @@
 .SideMenu {
   height: 100%;
-  width: 300px;
-  background-color: rgb(182, 131, 107);
+  width: 200px;
+  background-color: #ffffff;
 }
 .SideMenuList {
   height: auto;
@@ -16,26 +16,26 @@
   margin: 0;
   display: flex;
   flex-direction: row;
-  color:rgb(27, 18, 6);
+  color: rgb(27, 18, 6);
   justify-content: center;
   align-items: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .SideMenuList .row:hover {
-    cursor: pointer;
-    background-color: rgba(126, 59, 15, 0.534) ;
+  cursor: pointer;
+  background-color: #cde5fe;
 }
 
 .SideMenuList #active {
-    background-color: rgba(126, 59, 15, 0.534) ;
+  background-color: rgba(165, 188, 231, 0.534);
 }
 .row #icon {
-    flex: 30%;
-    display: grid;
-    place-items: center;
+  flex: 30%;
+  display: grid;
+  place-items: center;
 }
 
 .row #title {
-    flex: 70%;
+  flex: 70%;
 }
