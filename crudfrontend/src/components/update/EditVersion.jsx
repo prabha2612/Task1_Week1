@@ -38,12 +38,12 @@ const EditVersion = () => {
     event.preventDefault();
     await axios
       .patch(
-        `http://localhost:4000/api/budget/updatebudget/${id}`,
-        updatedbudget
+        `http://localhost:4000/api/version/updateversion/${id}`,
+        updatedversion
       )
       .then((response) => {
         toast.success(response.data.msg, { position: "top-right" });
-        navigate("/budget");
+        navigate("/version");
       })
       .catch((error) => {
         console.log(error);
@@ -56,43 +56,91 @@ const EditVersion = () => {
       <Link to="/budget">Back</Link>
       <form className="editAuditForm" onSubmit={submitform}>
         <div className="inputgroup">
-          <label htmlFor="projecttype">Project Type: </label>
+          <label htmlFor="versionType">Version Type: </label>
           <input
             type="text"
-            id="projecttype"
-            name="projecttype"
+            id="versionType"
+            name="versionType"
             autoComplete="off"
-            value={updatedbudget.projecttype}
-            placeholder="Date of Auidt:"
+            value={updatedversion.versionType}
+            placeholder="Version Type:"
             onChange={inputchangehandler}
           />
         </div>
         <div className="inputgroup">
-          <label htmlFor="Duration">Duration: </label>
+          <label htmlFor="change">Change: </label>
           <input
             type="number"
-            id="Duration"
-            name="Duration"
+            id="change"
+            name="change"
             autoComplete="off"
-            value={updatedbudget.Duration}
-            placeholder="Duration:"
+            value={updatedversion.change}
+            placeholder="change:"
             onChange={inputchangehandler}
           />
         </div>
         <div className="inputgroup">
-          <label htmlFor="budgetedhours">Budgeted Hours: </label>
+          <label htmlFor="changeReason">Change Reason: </label>
           <input
             type="text"
-            id="budgetedhours"
-            name="budgetedhours"
+            id="changeReason"
+            name="changeReason"
             autoComplete="off"
-            value={updatedbudget.budgetedhours}
-            placeholder="Budgeted hours :"
+            value={updatedversion.changeReason}
+            placeholder="change Reason :"
             onChange={inputchangehandler}
           />
         </div>
         <div className="inputgroup">
-          <button type="submit">Update Budget</button>
+          <label htmlFor="createdBy">Created By: </label>
+          <input
+            type="text"
+            id="createdBy"
+            name="createdBy"
+            autoComplete="off"
+            value={updatedversion.createdBy}
+            placeholder="created By:"
+            onChange={inputchangehandler}
+          />
+        </div>
+        <div className="inputgroup">
+          <label htmlFor="revisionDate">Revision Date: </label>
+          <input
+            type="date"
+            id="revisionDate"
+            name="revisionDate"
+            autoComplete="off"
+            value={updatedversion.revisionDate}
+            placeholder="Revision Date :"
+            onChange={inputchangehandler}
+          />
+        </div>
+        <div className="inputgroup">
+          <label htmlFor="approvalDate">Approval Date: </label>
+          <input
+            type="date"
+            id="approvalDate"
+            name="approvalDate"
+            autoComplete="off"
+            value={updatedversion.approvalDate}
+            placeholder="Approval Date:"
+            onChange={inputchangehandler}
+          />
+        </div>
+        <div className="inputgroup">
+          <label htmlFor="approvedBy">Approved By: </label>
+          <input
+            type="string"
+            id="approvedBy"
+            name="approvedBy"
+            autoComplete="off"
+            value={updatedversion.approvedBy}
+            placeholder="ApprovedBy:"
+            onChange={inputchangehandler}
+          />
+        </div>
+        <div className="inputgroup">
+          <button type="submit">Update Version</button>
         </div>
       </form>
     </div>

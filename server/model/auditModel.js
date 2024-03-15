@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const auditSchema = new mongoose.Schema({
   auditDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   reviewedby: {

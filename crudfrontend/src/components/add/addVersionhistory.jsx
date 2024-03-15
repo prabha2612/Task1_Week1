@@ -69,7 +69,7 @@ const AddVersion = ({ closeModal }) => {
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="changeReason">Budgeted Hours: </label>
+              <label htmlFor="changeReason">Change Reason: </label>
               <input
                 type="text"
                 id="changeReason"
@@ -80,7 +80,18 @@ const AddVersion = ({ closeModal }) => {
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="revisionDate">Budgeted Hours: </label>
+              <label htmlFor="createdBy">Created By: </label>
+              <input
+                type="text"
+                id="createdBy"
+                name="createdBy"
+                autoComplete="off"
+                placeholder="created By"
+                onChange={inputhandler}
+              />
+            </div>
+            <div className="inputgroup">
+              <label htmlFor="revisionDate">Revision Date: </label>
               <input
                 type="date"
                 id="revisionDate"
@@ -91,7 +102,7 @@ const AddVersion = ({ closeModal }) => {
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="approvalDate">Budgeted Hours: </label>
+              <label htmlFor="approvalDate">Approval Date: </label>
               <input
                 type="date"
                 id="approvalDate"
@@ -102,7 +113,7 @@ const AddVersion = ({ closeModal }) => {
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="approvedBy">Budgeted Hours: </label>
+              <label htmlFor="approvedBy">Approved By: </label>
               <input
                 type="text"
                 id="approvedBy"

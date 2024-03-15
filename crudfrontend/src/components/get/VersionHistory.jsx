@@ -12,7 +12,7 @@ const Version = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:4000/api/budget/getbudget"
+        "http://localhost:4000/api/version/getversion"
       );
       setVersions(response.data);
     };
@@ -61,6 +61,7 @@ const Version = () => {
             <th>Revision Date</th>
             <th>Approval Date</th>
             <th>Approved Date</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>

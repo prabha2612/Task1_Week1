@@ -1,6 +1,6 @@
 // import puppeteer from "puppeteer";
 import transporter from "../emailservice/emailtransport.js";
-import VersionHistory from "../model/versionHistoryModel.js"
+import VersionHistory from "../model/versionHistoryModel.js";
 
 export const createversion = async (req, res) => {
   try {
@@ -9,7 +9,11 @@ export const createversion = async (req, res) => {
       return res.status(404).json({ msg: "Data not found!" });
     }
     const savedversion = await versionData.save();
-    await sendEmail("Version History Created", "A new Version is created", req.body);
+    await sendEmail(
+      "Version History Created",
+      "A new Version is created",
+      req.body
+    );
     res.status(200).json({ msg: "Version History created successfully" });
   } catch (error) {
     res.status(500).json({ Error: error });
@@ -37,9 +41,9 @@ export const getOneversion = async (req, res) => {
     }
     res.status(200).json(versionExist);
   } catch (error) {
-    res.status(500).json({error: error});
+    res.status(500).json({ error: error });
   }
-}
+};
 
 export const updatedversion = async (req, res) => {
   try {
@@ -48,7 +52,11 @@ export const updatedversion = async (req, res) => {
     if (!versionExist) {
       return res.status(401).json({ msg: "Version History not found" });
     }
-    const updatedversion = await VersionHistory.findByIdAndUpdate(id, req.body, {new: true});
+    const updatedversion = await VersionHistory.findByIdAndUpdate(
+      id,
+      req.body,
+      { new: true }
+    );
     await sendEmail(
       "Version History Updated",
       "A Version History has been updated!",
@@ -69,7 +77,11 @@ export const deleteversion = async (req, res) => {
       return res.status(404).json({ msg: "Version History not found!" });
     }
     await VersionHistory.findByIdAndDelete(id);
-    await sendEmail("Version History Deleted", "A Version History was deleted", versionExist);
+    await sendEmail(
+      "Version History Deleted",
+      "A Version History was deleted",
+      versionExist
+    );
 
     res.status(200).json({ msg: "Version History deleted!" });
   } catch (error) {
