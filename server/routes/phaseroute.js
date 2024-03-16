@@ -1,12 +1,11 @@
 import express from "express";
 import {
-  createsprint,
-  deletesprint,
-  getOnesprint,
-  getsprint,
-  updatedsprint,
-} from "../controller/sprintwisecontroller.js";
-import { createphase, deletephase, getOnephase, getphase, updatedphase } from "../controller/phasescontroller.js";
+  createphase,
+  deletephase,
+  getOnephase,
+  getphase,
+  updatedphase,
+} from "../controller/phasescontroller.js";
 
 const phaseroute = express.Router();
 
