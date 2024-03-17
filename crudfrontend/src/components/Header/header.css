@@ -1,9 +1,11 @@
 .Appheader {
   background-color: #0173eb;
   color: #ffffff;
-  height: 70px;
+  height: 90px;
   padding: 2px;
   border-bottom: 1px solid #ffffff;
+  content: flex;
+  flex-direction: row;
 }
 
 .h1 {
@@ -12,4 +14,14 @@
   margin-top: 10px;
   margin-bottom: 10px;
   color: #ffffff;
+}
+
+.button {
+  margin-left: 92%;
+  background-color: #0d6ebe;
+  color: #ffffff;
+  box-sizing:content-box;
+  height: 2rem; 
+  width: 4rem;
+  padding: auto;
 }

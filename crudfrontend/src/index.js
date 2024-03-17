@@ -4,14 +4,23 @@ import "./index.css";
 import App from "./App";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <Auth0Provider
+    domain="dev-2elcsf7ltepcvhpo.us.auth0.com"
+    clientId="hCQgYDNdXc4MzEaeQ5dWFHDnzr04yF0g"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
     <BrowserRouter>
       <App />
       <Toaster />
     </BrowserRouter>
+    </Auth0Provider>
   </React.StrictMode>
 );
 

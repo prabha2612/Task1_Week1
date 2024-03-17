@@ -23,6 +23,10 @@ const projectSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
+  projectName:{
+    type: String,
+    required: true,
+  },
   projectBudget: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "projectBudget", // Reference to the Audit model
