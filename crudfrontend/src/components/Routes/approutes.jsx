@@ -26,6 +26,18 @@ import RiskProfile from "../get/riskprofiling.jsx";
 import EditRiskprofiling from "../update/editRiskprofiling.jsx";
 import Timelines from "../get/timeline.jsx";
 import EditTimelineModal from "../update/edittimeline.jsx";
+import Resources from "../get/resources.jsx";
+import EditResourceModal from "../update/editresources.jsx";
+import ClientFeedback from "../get/feedback.jsx";
+import EditClientFeedback from "../update/editfeedback.jsx";
+import Phases from "../get/phases.jsx";
+import EditPhase from "../update/updatephases.jsx";
+import SprintWise from "../get/sprintwise.jsx";
+import EditSprintModal from "../update/editsprintwise.jsx";
+import ProjectUpdates from "../get/projectupdates.jsx";
+import EditProjectUpdate from "../update/editProjectupdates.jsx";
+import MOM from "../get/momsofclient.jsx";
+import EditMOM from "../update/editMoMs.jsx";
 
 function AppRoutes() {
   return (
@@ -54,11 +66,11 @@ function AppRoutes() {
       </Route>
       <Route path="/scope">
         <Route index element={<ProjectScope />} />
-        <Route path="editscope/:id" element={<EditScope/>} />
+        <Route path="editscope/:id" element={<EditScope />} />
       </Route>
       <Route path="/projectstack">
         <Route index element={<Techstack />} />
-        <Route path="edittechstack/:id" element={<EditTechstack/>} />
+        <Route path="edittechstack/:id" element={<EditTechstack />} />
       </Route>
       <Route path="/opEscalationMatrix">
         <Route index element={<OpescMatrix />} />
@@ -66,34 +78,53 @@ function AppRoutes() {
       </Route>
       <Route path="/finEscalationMatrix">
         <Route index element={<FinescMatrix />} />
-        <Route path="finEscalationMatrix/:id" element={<EditFinescMatrix/>} />
+        <Route path="finEscalationMatrix/:id" element={<EditFinescMatrix />} />
       </Route>
       <Route path="/techEscalationmatrix">
         <Route index element={<TechescMatrix />} />
-        <Route path="techEscalationmatrix/:id" element={<EditTechescMatrix/>} />
+        <Route
+          path="techEscalationmatrix/:id"
+          element={<EditTechescMatrix />}
+        />
       </Route>
       <Route path="/Stakeholders">
         <Route index element={<Stakeholders />} />
-        <Route path="editstakeholder/:id" element={<EditStakeholder/>} />
+        <Route path="editstakeholder/:id" element={<EditStakeholder />} />
       </Route>
       <Route path="/riskprofiling">
         <Route index element={<RiskProfile />} />
-        <Route path="editriskprofiling/:id" element={<EditRiskprofiling/>} />
+        <Route path="editriskprofiling/:id" element={<EditRiskprofiling />} />
       </Route>
       <Route path="/phases">
-        <Route index element={<RiskProfile />} />
-        <Route path="editphases/:id" element={<EditRiskprofiling/>} />
+        <Route index element={<Phases />} />
+        <Route path="editphases/:id" element={<EditPhase />} />
       </Route>
       <Route path="/sprintwise">
-        <Route index element={<RiskProfile />} />
-        <Route path="editsprint/:id" element={<EditRiskprofiling/>} />
+        <Route index element={<SprintWise />} />
+        <Route path="editsprint/:id" element={<EditSprintModal />} />
       </Route>
       <Route path="/timeline">
         <Route index element={<Timelines />} />
         <Route path="edittimeline/:id" element={<EditTimelineModal />} />
       </Route>
-
+      <Route path="/resources">
+        <Route index element={<Resources />} />
+        <Route path="editresources/:id" element={<EditResourceModal />} />
+      </Route>
+      <Route path="/clientfeedback">
+        <Route index element={<ClientFeedback />} />
+        <Route path="editclientfeedback/:id" element={<EditClientFeedback />} />
+      </Route>
+      <Route path="/projectUpdates">
+        <Route index element={<ProjectUpdates />} />
+        <Route path="editupdates/:id" element={<EditProjectUpdate />} />
+      </Route>
+      <Route path="/MoMs">
+        <Route index element={<MOM />} />
+        <Route path="editMoMs/:id" element={<EditMOM />} />
+      </Route>
     </Routes>
+
     // </BrowserRouter>
   );
 }

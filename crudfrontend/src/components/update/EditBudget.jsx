@@ -48,7 +48,7 @@ const EditBudget = () => {
 
   return (
     <div className="editaudit">
-      <h3>Edit Audit History</h3>
+      <h3>Edit Budget</h3>
       <Link to="/budget">Back</Link>
       <form className="editAuditForm" onSubmit={submitform}>
         <div className="inputgroup">

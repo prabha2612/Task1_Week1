@@ -23,113 +23,100 @@ const projectSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  projectName:{
+  projectName: {
     type: String,
+    required: true,
+  },
+  auditHistory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Audit, // Reference to the Audit model
     required: true,
   },
   projectBudget: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "projectBudget", // Reference to the Audit model
+    ref: projectBudget, // Reference to the projectBudget model
     required: true,
   },
   versionHistory: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "versionHistory", // Reference to the Audit model
+    ref: versionHistory, // Reference to the versionHistory model
     required: true,
   },
   projectDescription: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "projectDescription", // Reference to the Audit model
+    ref: projectDescription, // Reference to the projectDescription model
     required: true,
   },
   scope: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "projectScope", // Reference to the Audit model
+    ref: projectScope, // Reference to the projectScope model
     required: true,
   },
   projectStack: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Techstack", // Reference to the Audit model
+    ref: Techstack, // Reference to the Techstack model
     required: true,
   },
   OperationalMatrix: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Audit", // Reference to the Audit model
+    ref: OpescMatrix, // Reference to the OpescMatrix model
     required: true,
   },
   financialmatrix: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "FinescMatrix", // Reference to the Audit model
+    ref: FinescMatrix, // Reference to the FinescMatrix model
     required: true,
   },
   technicalMatrix: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "TechescMatrix", // Reference to the Audit model
+    ref: TechescMatrix, // Reference to the TechescMatrix model
     required: true,
   },
   stakeHolders: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Stakeholders", // Reference to the Audit model
+    ref: Stakeholders, // Reference to the Stakeholders model
     required: true,
   },
   riskProfiling: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Riskprofiling", // Reference to the Audit model
+    ref: Riskprofiling, // Reference to the Riskprofiling model
     required: true,
   },
   phases: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Phases", // Reference to the Audit model
+    ref: Phases, // Reference to the Phases model
     required: true,
   },
   sprintDetails: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "SprintWise", // Reference to the Audit model
+    ref: SprintWise, // Reference to the SprintWise model
     required: true,
   },
   timelineReference: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Timeline", // Reference to the Audit model
+    ref: Timeline, // Reference to the Timeline model
     required: true,
   },
   Resources: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Resources", // Reference to the Audit model
+    ref: Resources, // Reference to the Resources model
     required: true,
   },
   clientFeedback: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Clientfeedback", // Reference to the Audit model
+    ref: Clientfeedback, // Reference to the Clientfeedback model
     required: true,
   },
   projectUpdates: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "ProjectUpdates", // Reference to the Audit model
+    ref: ProjectUpdates, // Reference to the ProjectUpdates model
     required: true,
   },
   moms: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "MOMofclient", // Reference to the Audit model
+    ref: MOMofclient, // Reference to the MOMofclient model
     required: true,
   },
-  // audithistory: [Audit],
-  // projectBudget: [projectBudget],
-  // versionHistory: [versionHistory],
-  // projectDescription: [projectDescription],
-  // scope: [projectScope],
-  // projectStack: [Techstack],
-  // OperationalMatrix: [OpescMatrix],
-  // financialmatrix: [FinescMatrix],
-  // technicalMatrix: [TechescMatrix],
-  // stakeHolders: [Stakeholders],
-  // riskProfiling: [Riskprofiling],
-  // phases: [Phases],
-  // sprintDetails: [SprintWise],
-  // timelineReference: [Timeline],
-  // Resources: [Resources],
-  // clientFeedback: [Clientfeedback],
-  // projectUpdates: [ProjectUpdates],
-  // moms: [MOMofclient],
 });
 
 export default mongoose.model("Projects", projectSchema);

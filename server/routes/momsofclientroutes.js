@@ -13,6 +13,6 @@ momRoute.post("/createmom", createMOM);
 momRoute.get("/getmoms", getMOMs);
 momRoute.get("/getonemom/:id", getMOMById);
 momRoute.patch("/updatemom/:id", updateMOM);
-momRoute.delete("/deletemom/:id", deleteMOM);
+// momRoute.delete("/deletemom/:id", deleteMOM);
 
 export default momRoute;

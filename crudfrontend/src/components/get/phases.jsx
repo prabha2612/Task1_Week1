@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import AddPhaseModal from "../add/AddPhaseModal";
+import AddPhaseModal from "../add/addphases";
 
 const Phases = () => {
   const [phases, setPhases] = useState([]);
@@ -11,7 +11,9 @@ const Phases = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/phase/getphase");
+        const response = await axios.get(
+          "http://localhost:4000/api/phase/getphase"
+        );
         setPhases(response.data);
       } catch (error) {
         console.log(error);
@@ -23,8 +25,12 @@ const Phases = () => {
 
   const deletePhase = async (phaseId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/phase/deletephase/${phaseId}`);
-      setPhases((prevPhases) => prevPhases.filter((phase) => phase._id !== phaseId));
+      const response = await axios.delete(
+        `http://localhost:4000/api/phase/deletephase/${phaseId}`
+      );
+      setPhases((prevPhases) =>
+        prevPhases.filter((phase) => phase._id !== phaseId)
+      );
       toast.success(response.data.msg, { position: "top-right" });
     } catch (error) {
       console.log(error);
@@ -71,7 +77,9 @@ const Phases = () => {
               <td>{new Date(phase.completionDate).toLocaleDateString()}</td>
               <td>{new Date(phase.approvalDate).toLocaleDateString()}</td>
               <td>{phase.status}</td>
-              <td>{new Date(phase.revisedCompletionDate).toLocaleDateString()}</td>
+              <td>
+                {new Date(phase.revisedCompletionDate).toLocaleDateString()}
+              </td>
               <td>{phase.comments}</td>
               <td className="actionButton">
                 <button onClick={() => deletePhase(phase._id)}>

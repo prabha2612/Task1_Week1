@@ -108,7 +108,9 @@ const EditPhase = () => {
           />
         </div>
         <div className="inputgroup">
-          <label htmlFor="revisedCompletionDate">Revised Completion Date: </label>
+          <label htmlFor="revisedCompletionDate">
+            Revised Completion Date:{" "}
+          </label>
           <input
             type="date"
             id="revisedCompletionDate"

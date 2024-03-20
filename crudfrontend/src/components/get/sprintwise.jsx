@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import toast from "react-hot-toast";
-import AddSprintModal from "../add/AddSprintModal";
+import AddSprintModal from "../add/addsprintwise";
 
 const SprintWise = () => {
   const [sprints, setSprints] = useState([]);
@@ -11,7 +10,9 @@ const SprintWise = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/sprintwise/getsprint");
+        const response = await axios.get(
+          "http://localhost:4000/api/sprintwise/getsprint"
+        );
         setSprints(response.data);
       } catch (error) {
         console.log(error);
@@ -20,16 +21,6 @@ const SprintWise = () => {
 
     fetchData();
   }, []);
-
-  const deleteSprint = async (sprintId) => {
-    try {
-      const response = await axios.delete(`http://localhost:4000/api/sprintwise/deletesprint/${sprintId}`);
-      setSprints((prevSprints) => prevSprints.filter((sprint) => sprint._id !== sprintId));
-      toast.success(response.data.msg, { position: "top-right" });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="AuditHistory">
@@ -70,9 +61,6 @@ const SprintWise = () => {
               <td>{sprint.status}</td>
               <td>{sprint.comments}</td>
               <td className="actionButton">
-                <button onClick={() => deleteSprint(sprint._id)}>
-                  <i className="fa-solid fa-trash"></i>
-                </button>
                 <Link to={`/sprintwise/editsprint/${sprint._id}`}>
                   <i className="fa-solid fa-pen-to-square"></i>
                 </Link>

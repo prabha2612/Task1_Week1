@@ -37,9 +37,9 @@ export const getOneaudit = async (req, res) => {
     }
     res.status(200).json(auditExist);
   } catch (error) {
-    res.status(500).json({error: error});
+    res.status(500).json({ error: error });
   }
-}
+};
 
 export const updateaudit = async (req, res) => {
   try {
@@ -48,7 +48,9 @@ export const updateaudit = async (req, res) => {
     if (!auditExist) {
       return res.status(401).json({ msg: "Audit not found" });
     }
-    const updatedAudit = await Audit.findByIdAndUpdate(id, req.body, {new: true});
+    const updatedAudit = await Audit.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     await sendEmail(
       "Audit Updated",
       "An Audit has been updated!",
@@ -106,7 +108,7 @@ const sendEmail = async (subject, text, data) => {
       from: "fortestingcrud123@gmail.com",
       to: "pravinfriends12@gmail.com",
       subject: subject,
-      text: `Hello [Stakeholder Name],
+      text: `Hello ,
 
       Please note that audit has been completed and here is the audit summary:
       
