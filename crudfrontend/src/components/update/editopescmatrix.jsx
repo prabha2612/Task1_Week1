@@ -36,8 +36,10 @@ const EditOpescMatrix = () => {
         `http://localhost:4000/api/opescmatrix/updateopescmatrix/${id}`,
         updatedMatrix
       );
-      toast.success("Opesc Matrix updated successfully", { position: "top-right" });
-      navigate("/opescmatrix");
+      toast.success("Opesc Matrix updated successfully", {
+        position: "top-right",
+      });
+      navigate("/opescalationmatrix");
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +48,7 @@ const EditOpescMatrix = () => {
   return (
     <div className="editaudit">
       <h3>Edit Opesc Matrix</h3>
-      <Link to="/opescmatrix">Back</Link>
+      <Link to="/opescalationmatrix">Back</Link>
       <form className="editAuditForm" onSubmit={submitForm}>
         <div className="inputgroup">
           <label htmlFor="escalationlevel">Escalation Level: </label>

@@ -36,8 +36,10 @@ const EditTechescMatrix = () => {
         `http://localhost:4000/api/techescmatrix/updattechpescmatrix/${id}`,
         updatedMatrix
       );
-      toast.success("Techesc Matrix updated successfully", { position: "top-right" });
-      navigate("/techescmatrix");
+      toast.success("Techesc Matrix updated successfully", {
+        position: "top-right",
+      });
+      navigate("/techescalationmatrix");
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +48,7 @@ const EditTechescMatrix = () => {
   return (
     <div className="editaudit">
       <h3>Edit Techesc Matrix</h3>
-      <Link to="/techescmatrix">Back</Link>
+      <Link to="/techescalationmatrix">Back</Link>
       <form className="editAuditForm" onSubmit={submitForm}>
         <div className="inputgroup">
           <label htmlFor="escalationlevel">Escalation Level: </label>

@@ -11,7 +11,9 @@ const OpescMatrix = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/opescmatrix/getopescmatrix");
+        const response = await axios.get(
+          "http://localhost:4000/api/opescmatrix/getopescmatrix"
+        );
         setOpescMatrices(response.data);
       } catch (error) {
         console.log(error);
@@ -23,8 +25,12 @@ const OpescMatrix = () => {
 
   const deleteOpescMatrix = async (opescMatrixId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/opescmatrix/deleteopescmatrix/${opescMatrixId}`);
-      setOpescMatrices((prevOpescMatrices) => prevOpescMatrices.filter((matrix) => matrix._id !== opescMatrixId));
+      const response = await axios.delete(
+        `http://localhost:4000/api/opescmatrix/deleteopescmatrix/${opescMatrixId}`
+      );
+      setOpescMatrices((prevOpescMatrices) =>
+        prevOpescMatrices.filter((matrix) => matrix._id !== opescMatrixId)
+      );
       toast.success(response.data.msg, { position: "top-right" });
     } catch (error) {
       console.log(error);
@@ -69,9 +75,9 @@ const OpescMatrix = () => {
                 <button onClick={() => deleteOpescMatrix(matrix._id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>
-                <Link to={"/escalationmatrix/editopescmatrix/" + matrix._id}>
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
+                <Link to={"/opescalationmatrix/editopescmatrix/" + matrix._id}>
+                  <i className="fa-solid fa-pen-to-square"></i>
+                </Link>
               </td>
             </tr>
           ))}

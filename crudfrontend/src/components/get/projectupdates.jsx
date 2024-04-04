@@ -71,7 +71,7 @@ const ProjectUpdates = () => {
               <td>{update.generalUpdates}</td>
               <td className="actionButton">
                 <button onClick={() => deleteUpdate(update._id)}>Delete</button>
-                <Link to={`/projectUpdates/editupdates/${update._id}`}>
+                <Link to={`/projectupdates/editupdates/${update._id}`}>
                   Edit
                 </Link>
               </td>

@@ -59,7 +59,7 @@ const MOM = () => {
               <td>{mom.momLink}</td>
               <td>{mom.comments}</td>
               <td className="actionButton">
-                <Link to={`/MoMs/editMoMs/${mom._id}`}>Edit</Link>
+                <Link to={`/moms/editmoms/${mom._id}`}>Edit</Link>
               </td>
             </tr>
           ))}

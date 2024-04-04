@@ -11,7 +11,9 @@ const RiskProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/riskprofile/getriskprofile");
+        const response = await axios.get(
+          "http://localhost:4000/api/riskprofile/getriskprofile"
+        );
         setRiskProfiles(response.data);
       } catch (error) {
         console.log(error);
@@ -23,8 +25,12 @@ const RiskProfile = () => {
 
   const deleteRiskProfile = async (riskProfileId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/riskprofile/deleteriskprofile/${riskProfileId}`);
-      setRiskProfiles((prevRiskProfiles) => prevRiskProfiles.filter((profile) => profile._id !== riskProfileId));
+      const response = await axios.delete(
+        `http://localhost:4000/api/riskprofile/deleteriskprofile/${riskProfileId}`
+      );
+      setRiskProfiles((prevRiskProfiles) =>
+        prevRiskProfiles.filter((profile) => profile._id !== riskProfileId)
+      );
       toast.success(response.data.msg, { position: "top-right" });
     } catch (error) {
       console.log(error);

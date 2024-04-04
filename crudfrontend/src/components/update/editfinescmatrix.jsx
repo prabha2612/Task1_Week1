@@ -36,8 +36,10 @@ const EditFinescMatrix = () => {
         `http://localhost:4000/api/finescmatrix/updatfinpescmatrix/${id}`,
         updatedMatrix
       );
-      toast.success("Finesc Matrix updated successfully", { position: "top-right" });
-      navigate("/finescmatrix");
+      toast.success("Finesc Matrix updated successfully", {
+        position: "top-right",
+      });
+      navigate("/finescalationmatrix");
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +48,7 @@ const EditFinescMatrix = () => {
   return (
     <div className="editaudit">
       <h3>Edit Finesc Matrix</h3>
-      <Link to="/finescmatrix">Back</Link>
+      <Link to="/finescalationmatrix">Back</Link>
       <form className="editAuditForm" onSubmit={submitForm}>
         <div className="inputgroup">
           <label htmlFor="escalationlevel">Escalation Level: </label>

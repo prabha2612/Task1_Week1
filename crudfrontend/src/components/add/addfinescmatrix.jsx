@@ -3,7 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import "./addmodal.css";
 
-const AddFinescMatrixModal = ({ closeModal }) => {
+const AddFinescMatrixModal = ({ closeModal, timelineId }) => {
   const [finescMatrix, setFinescMatrix] = useState({
     escalationlevel: "",
     name: "",

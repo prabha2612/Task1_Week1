@@ -22,10 +22,14 @@ const ProjectDescription = () => {
 
   const deleteDescription = async (descriptionId) => {
     await axios
-      .delete(`http://localhost:4000/api/description/deletedescription/${descriptionId}`)
+      .delete(
+        `http://localhost:4000/api/description/deletedescription/${descriptionId}`
+      )
       .then((response) => {
         setDescriptions((prevDescriptions) =>
-          prevDescriptions.filter((description) => description._id !== descriptionId)
+          prevDescriptions.filter(
+            (description) => description._id !== descriptionId
+          )
         );
         toast.success(response.data.msg, { position: "top-right" });
       })
@@ -44,8 +48,10 @@ const ProjectDescription = () => {
       >
         Add Project Description
       </button>
-      {isModalOpen && <AddDescriptionmodal closeModal={() => setIsModalOpen(false)} />}
-      
+      {isModalOpen && (
+        <AddDescriptionmodal closeModal={() => setIsModalOpen(false)} />
+      )}
+
       {descriptions.map((description, index) => (
         <div key={description._id} className="descriptionBox">
           <label htmlFor={`description${index}`}>Project Description:</label>
@@ -59,9 +65,9 @@ const ProjectDescription = () => {
               <i className="fa-solid fa-trash"></i>
             </button>
             <br />
-            <Link to={"/Description/editdescription/" + description._id}>
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
+            <Link to={"/description/editdescription/" + description._id}>
+              <i className="fa-solid fa-pen-to-square"></i>
+            </Link>
           </div>
         </div>
       ))}

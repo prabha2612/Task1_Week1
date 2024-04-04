@@ -1,6 +1,6 @@
 import React from "react";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
-import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 
 export const Sidemenudata = [
   {
@@ -10,7 +10,7 @@ export const Sidemenudata = [
   },
   {
     title: "Audit History",
-    url: "/Audit",
+    url: "/audit",
     icon: <ArrowForwardIosRoundedIcon />,
   },
   {
@@ -20,7 +20,7 @@ export const Sidemenudata = [
   },
   {
     title: "Version History",
-    url: "/Version",
+    url: "/version",
     icon: <ArrowForwardIosRoundedIcon />,
   },
   {
@@ -40,22 +40,22 @@ export const Sidemenudata = [
   },
   {
     title: "Operational Escaltion Matrix",
-    url: "/opEscalationMatrix",
+    url: "/opescalationmatrix",
     icon: <ArrowForwardIosRoundedIcon />,
   },
   {
     title: "Financial Escaltion Matrix",
-    url: "/finEscalationMatrix",
+    url: "/finescalationmatrix",
     icon: <ArrowForwardIosRoundedIcon />,
   },
   {
     title: "Technical Escaltion Matrix",
-    url: "/techEscalationMatrix",
+    url: "/techescalationmatrix",
     icon: <ArrowForwardIosRoundedIcon />,
   },
   {
     title: "Stakeholders",
-    url: "/Stakeholders",
+    url: "/stakeholders",
     icon: <ArrowForwardIosRoundedIcon />,
   },
   {
@@ -90,12 +90,12 @@ export const Sidemenudata = [
   },
   {
     title: "Project Updates",
-    url: "/projectUpdates",
+    url: "/projectupdates",
     icon: <ArrowForwardIosRoundedIcon />,
   },
   {
     title: "MoMs of client meetings",
-    url: "/MoMs",
+    url: "/moms",
     icon: <ArrowForwardIosRoundedIcon />,
   },
 ];

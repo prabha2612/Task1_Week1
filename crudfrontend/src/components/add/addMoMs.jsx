@@ -19,7 +19,7 @@ const AddMOMModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/mom/createmom",
+        "http://localhost:4000/api/moms/createmom",
         momData
       );
       toast.success(response.data.msg, { position: "top-right" });

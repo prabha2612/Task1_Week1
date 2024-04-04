@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -50,6 +50,7 @@ const EditMOM = () => {
   return (
     <div className="editMOM">
       <h3>Edit MOM</h3>
+      <Link to="/moms">Back</Link>
       <form onSubmit={submitHandler}>
         <div className="inputgroup">
           <label htmlFor="Date">Date:</label>

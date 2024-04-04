@@ -11,7 +11,9 @@ const TechescMatrix = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/techescmatrix/gettechescmatrix");
+        const response = await axios.get(
+          "http://localhost:4000/api/techescmatrix/gettechescmatrix"
+        );
         setTechescMatrices(response.data);
       } catch (error) {
         console.log(error);
@@ -23,8 +25,12 @@ const TechescMatrix = () => {
 
   const deleteTechescMatrix = async (techescMatrixId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/techescmatrix/deletetechescmatrix/${techescMatrixId}`);
-      setTechescMatrices((prevTechescMatrices) => prevTechescMatrices.filter((matrix) => matrix._id !== techescMatrixId));
+      const response = await axios.delete(
+        `http://localhost:4000/api/techescmatrix/deletetechescmatrix/${techescMatrixId}`
+      );
+      setTechescMatrices((prevTechescMatrices) =>
+        prevTechescMatrices.filter((matrix) => matrix._id !== techescMatrixId)
+      );
       toast.success(response.data.msg, { position: "top-right" });
     } catch (error) {
       console.log(error);
@@ -70,7 +76,9 @@ const TechescMatrix = () => {
                   <i className="fa-solid fa-trash"></i>
                 </button>
                 <br />
-                <Link to={`/techEscalationMatrix/edittecescmatrix/${matrix._id}`}>
+                <Link
+                  to={`/techescalationmatrix/edittecescmatrix/${matrix._id}`}
+                >
                   <i className="fa-solid fa-pen-to-square"></i>
                 </Link>
               </td>

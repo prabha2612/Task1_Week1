@@ -48,19 +48,19 @@ function AppRoutes() {
         <Route index element={<Projects />} />
         <Route path="editversion/:id" element={<EditProject />} />
       </Route>
-      <Route path="/Audit">
+      <Route path="/audit">
         <Route index element={<Audit />} />
         <Route path="editaudit/:id" element={<Editaudit />} />
       </Route>
-      <Route path="/Budget">
+      <Route path="/budget">
         <Route index element={<Budget />} />
         <Route path="editbudget/:id" element={<EditBudget />} />
       </Route>
-      <Route path="/Version">
+      <Route path="/version">
         <Route index element={<VersionHistory />} />
         <Route path="editversion/:id" element={<EditVersion />} />
       </Route>
-      <Route path="/Description">
+      <Route path="/description">
         <Route index element={<ProjectDescription />} />
         <Route path="editdescription/:id" element={<EditDescription />} />
       </Route>
@@ -72,22 +72,19 @@ function AppRoutes() {
         <Route index element={<Techstack />} />
         <Route path="edittechstack/:id" element={<EditTechstack />} />
       </Route>
-      <Route path="/opEscalationMatrix">
+      <Route path="/opescalationmatrix">
         <Route index element={<OpescMatrix />} />
-        <Route path="opEscalationMatrix/:id" element={<EditOpescMatrix />} />
+        <Route path="editopescmatrix/:id" element={<EditOpescMatrix />} />
       </Route>
-      <Route path="/finEscalationMatrix">
+      <Route path="/finescalationmatrix">
         <Route index element={<FinescMatrix />} />
-        <Route path="finEscalationMatrix/:id" element={<EditFinescMatrix />} />
+        <Route path="editfinescmatrix/:id" element={<EditFinescMatrix />} />
       </Route>
-      <Route path="/techEscalationmatrix">
+      <Route path="/techescalationmatrix">
         <Route index element={<TechescMatrix />} />
-        <Route
-          path="techEscalationmatrix/:id"
-          element={<EditTechescMatrix />}
-        />
+        <Route path="edittecescmatrix/:id" element={<EditTechescMatrix />} />
       </Route>
-      <Route path="/Stakeholders">
+      <Route path="/stakeholders">
         <Route index element={<Stakeholders />} />
         <Route path="editstakeholder/:id" element={<EditStakeholder />} />
       </Route>
@@ -115,13 +112,13 @@ function AppRoutes() {
         <Route index element={<ClientFeedback />} />
         <Route path="editclientfeedback/:id" element={<EditClientFeedback />} />
       </Route>
-      <Route path="/projectUpdates">
+      <Route path="/projectupdates">
         <Route index element={<ProjectUpdates />} />
         <Route path="editupdates/:id" element={<EditProjectUpdate />} />
       </Route>
-      <Route path="/MoMs">
+      <Route path="/moms">
         <Route index element={<MOM />} />
-        <Route path="editMoMs/:id" element={<EditMOM />} />
+        <Route path="editmoms/:id" element={<EditMOM />} />
       </Route>
     </Routes>
 

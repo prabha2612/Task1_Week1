@@ -11,7 +11,9 @@ const FinescMatrix = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/finescmatrix/getfinescmatrix");
+        const response = await axios.get(
+          "http://localhost:4000/api/finescmatrix/getfinescmatrix"
+        );
         setFinescMatrices(response.data);
       } catch (error) {
         console.log(error);
@@ -23,8 +25,12 @@ const FinescMatrix = () => {
 
   const deleteFinescMatrix = async (finescMatrixId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/finescmatrix/deletefinescmatrix/${finescMatrixId}`);
-      setFinescMatrices((prevFinescMatrices) => prevFinescMatrices.filter((matrix) => matrix._id !== finescMatrixId));
+      const response = await axios.delete(
+        `http://localhost:4000/api/finescmatrix/deletefinescmatrix/${finescMatrixId}`
+      );
+      setFinescMatrices((prevFinescMatrices) =>
+        prevFinescMatrices.filter((matrix) => matrix._id !== finescMatrixId)
+      );
       toast.success(response.data.msg, { position: "top-right" });
     } catch (error) {
       console.log(error);
