@@ -9,10 +9,10 @@ import {
 
 const momRoute = express.Router();
 
-momRoute.post("/createmom", createMOM);
-momRoute.get("/getmoms", getMOMs);
-momRoute.get("/getonemom/:id", getMOMById);
-momRoute.patch("/updatemom/:id", updateMOM);
-// momRoute.delete("/deletemom/:id", deleteMOM);
+momRoute.post("/moms", createMOM);
+momRoute.get("/moms", getMOMs);
+momRoute.get("/moms/:id", getMOMById);
+momRoute.patch("/moms/:id", updateMOM);
+// momRoute.delete("/moms/:id", deleteMOM);
 
 export default momRoute;

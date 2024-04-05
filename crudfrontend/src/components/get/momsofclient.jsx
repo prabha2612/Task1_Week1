@@ -6,17 +6,17 @@ import { Link } from "react-router-dom";
 const MOM = () => {
   const [momData, setMomData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMom, setSelectedMom] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/moms/getmoms"
-        );
+        const response = await axios.get("http://localhost:4000/api/moms");
         setMomData(response.data);
       } catch (error) {
         console.log(error);
       }
+
     };
 
     fetchData();
@@ -60,6 +60,23 @@ const MOM = () => {
               <td>{mom.comments}</td>
               <td className="actionButton">
                 <Link to={`/moms/editmoms/${mom._id}`}>Edit</Link>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setSelectedMom(mom._id);
+                  }}
+                  className="addButton"
+                >
+                  Add MOM
+                </button>
+                {isModalOpen && (
+                  <AddMOMModal
+                    closeModal={() => {
+                      momId = { selectedMom };
+                      setIsModalOpen(false);
+                    }}
+                  />
+                )}
               </td>
             </tr>
           ))}

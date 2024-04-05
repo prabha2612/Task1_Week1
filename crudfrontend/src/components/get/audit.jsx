@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./audit.css";
-// import { Link } from "react-router-dom";
 import axios from "axios";
 import AddAuditModal from "../add/addaudit.jsx";
 import EditAuditModal from "../update/updateAudit.jsx";
@@ -12,22 +11,12 @@ const Audit = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        "http://localhost:4000/api/audit/getaudit"
-      );
+      const response = await axios.get("http://localhost:4000/api/audits");
       setaudits(response.data);
     };
 
     fetchData();
   }, []);
-
-  // const openModal = (audit) => {
-  //   setSelectedAudit(audit);
-  // };
-
-  // const closeModal = () => {
-  //   setSelectedAudit(null);
-  // };
 
   return (
     <div className="AuditHistory">
@@ -71,9 +60,6 @@ const Audit = () => {
                 <td>{audit.comments}</td>
                 <td>{audit.actionitem}</td>
                 <td className="actionButton">
-                  {/* <Link to={`/audit/editaudit/` + audit._id}>
-                    <i className="fa-solid fa-pen-to-square"></i>
-                  </Link> */}
                   <button
                     onClick={() => {
                       setIsModalOpen(true);

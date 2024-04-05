@@ -9,10 +9,10 @@ import {
 
 const clientFeedbackRoute = express.Router();
 
-clientFeedbackRoute.post("/createclientfeedback", createClientFeedback);
-clientFeedbackRoute.get("/getclientfeedbacks", getClientFeedbacks);
-clientFeedbackRoute.get("/getoneclientfeedback/:id", getClientFeedbackById);
-clientFeedbackRoute.patch("/updateclientfeedback/:id", updateClientFeedback);
-clientFeedbackRoute.delete("/deleteclientfeedback/:id", deleteClientFeedback);
+clientFeedbackRoute.post("/clientfeedbacks", createClientFeedback);
+clientFeedbackRoute.get("/clientfeedbacks", getClientFeedbacks);
+clientFeedbackRoute.get("/clientfeedbacks/:id", getClientFeedbackById);
+clientFeedbackRoute.patch("/clientfeedbacks/:id", updateClientFeedback);
+clientFeedbackRoute.delete("/clientfeedbacks/:id", deleteClientFeedback);
 
 export default clientFeedbackRoute;

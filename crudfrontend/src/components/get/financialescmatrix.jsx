@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AddFinescMatrixModal from "../add/addfinescmatrix";
+import EditFinescMatrixModal from "../update/editfinescmatrix";
 
 const FinescMatrix = () => {
   const [finescMatrices, setFinescMatrices] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedfinescMatrices, setSelectedfinescMatrices] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/finescmatrix/getfinescmatrix"
+          "http://localhost:4000/api/finescmatrices"
         );
         setFinescMatrices(response.data);
       } catch (error) {
@@ -26,7 +27,7 @@ const FinescMatrix = () => {
   const deleteFinescMatrix = async (finescMatrixId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/finescmatrix/deletefinescmatrix/${finescMatrixId}`
+        `http://localhost:4000/api/finescmatrices/${finescMatrixId}`
       );
       setFinescMatrices((prevFinescMatrices) =>
         prevFinescMatrices.filter((matrix) => matrix._id !== finescMatrixId)
@@ -75,9 +76,23 @@ const FinescMatrix = () => {
                 <button onClick={() => deleteFinescMatrix(matrix._id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>
-                <Link to={"/escalationmatrix/editfinescmatrix/" + matrix._id}>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setSelectedfinescMatrices(matrix._id);
+                  }}
+                  className="addButton"
+                >
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
+                {isModalOpen && (
+                  <EditFinescMatrixModal
+                    finescId={selectedfinescMatrices}
+                    closeModal={() => {
+                      setIsModalOpen(false);
+                    }}
+                  />
+                )}
               </td>
             </tr>
           ))}

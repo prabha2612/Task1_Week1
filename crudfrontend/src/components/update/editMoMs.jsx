@@ -17,7 +17,7 @@ const EditMOM = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/moms/getonemom/${id}`
+          `http://localhost:4000/api/moms/${id}`
         );
         setMOMData(response.data);
       } catch (error) {
@@ -37,7 +37,7 @@ const EditMOM = () => {
     event.preventDefault();
     try {
       const response = await axios.patch(
-        `http://localhost:4000/api/moms/updatemom/${id}`,
+        `http://localhost:4000/api/moms/${id}`,
         momData
       );
       toast.success(response.data.msg, { position: "top-right" });

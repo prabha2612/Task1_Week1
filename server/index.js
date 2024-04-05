@@ -49,14 +49,14 @@ mongoose
     console.error(err);
   });
 
-app.use("/api/audit", auditroute);
-app.use("/api/budget", budgetroute);
+app.use("/api", auditroute);
+app.use("/api", budgetroute);
 app.use("/api/version", versionroute);
 app.use("/api/description", descriptionroute);
 app.use("/api/scope", scoperoute);
 app.use("/api/techstack", techstackroute);
 app.use("/api/opescmatrix", opescmatrixroute);
-app.use("/api/finescmatrix", finescmatrixroute);
+app.use("/api", finescmatrixroute);
 app.use("/api/techescmatrix", techescmatrixroute);
 app.use("/api/stakeholders", stakeholdersroute);
 app.use("/api/riskprofile", riskprofileroute);
@@ -65,6 +65,6 @@ app.use("/api/sprintwise", sprintroute);
 app.use("/api/timeline", timelineroute);
 app.use("/api/projects", projectroute);
 app.use("/api/resources", resourceroute);
-app.use("/api/clientfeedback", clientFeedbackRoute);
+app.use("/api", clientFeedbackRoute);
 app.use("/api/projectupdates", projectUpdateRoute);
-app.use("/api/moms", momRoute);
+app.use("/api", momRoute);

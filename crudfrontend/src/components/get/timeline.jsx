@@ -68,9 +68,6 @@ const Timelines = () => {
                 <button onClick={() => deleteTimeline(timeline._id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>
-                {/* <Link to={`/timeline/edittimeline/${timeline._id}`}>
-                  <i className="fa-solid fa-pen-to-square"></i>
-                </Link> */}
                 <button
                   onClick={() => {
                     setIsModalOpen(true);

@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./audit.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Addprojectbudget from "../add/addprojectbudget.jsx";
 import toast from "react-hot-toast";
+import EditBudget from "../update/EditBudget.jsx";
 
 const Budget = () => {
   const [budgets, setbudgets] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedbudgets, setSelectedbudgets] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        "http://localhost:4000/api/budget/getbudget"
-      );
+      const response = await axios.get("http://localhost:4000/api/budgets");
       setbudgets(response.data);
     };
 
@@ -22,7 +21,7 @@ const Budget = () => {
 
   const deleteBudget = async (budgetId) => {
     await axios
-      .delete(`http://localhost:4000/api/budget/deletebudget/${budgetId}`)
+      .delete(`http://localhost:4000/api/budgets/${budgetId}`)
       .then((respones) => {
         setbudgets((prevBudget) =>
           prevBudget.filter((budget) => budget._id !== budgetId)
@@ -72,9 +71,23 @@ const Budget = () => {
                   <button onClick={() => deleteBudget(budget._id)}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
-                  <Link to={"/budget/editbudget/" + budget._id}>
+                  <button
+                    onClick={() => {
+                      setIsModalOpen(true);
+                      setSelectedbudgets(budget._id);
+                    }}
+                    className="addButton"
+                  >
                     <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
+                  </button>
+                  {isModalOpen && (
+                    <EditBudget
+                      budgetId={selectedbudgets}
+                      closeModal={() => {
+                        setIsModalOpen(false);
+                      }}
+                    />
+                  )}
                 </td>
               </tr>
             );

@@ -19,7 +19,7 @@ const AddprojectBudget = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/budget/createbudget",
+        "http://localhost:4000/api/budgets",
         budget
       );
       toast.success(response.data.msg, { position: "top-right" });

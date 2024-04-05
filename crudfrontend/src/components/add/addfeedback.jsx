@@ -21,7 +21,7 @@ const AddClientFeedbackModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/clientfeedback/createclientfeedback",
+        "http://localhost:4000/api/clientfeedbacks",
         feedback
       );
       toast.success(response.data.msg, { position: "top-right" });

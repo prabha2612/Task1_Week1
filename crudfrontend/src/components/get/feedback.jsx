@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import AddClientFeedbackModal from "../add/addfeedback";
+import EditClientFeedbackModal from "../update/editfeedback";
 
 const ClientFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedfeedback, setSelectedfeedback] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/clientfeedback/getclientfeedbacks"
+          "http://localhost:4000/api/clientfeedbacks"
         );
         setFeedbacks(response.data);
       } catch (error) {
@@ -57,9 +58,21 @@ const ClientFeedback = () => {
               <td>{feedback.actionTaken}</td>
               <td>{feedback.closureDate}</td>
               <td className="actionButton">
-                <Link to={`/clientfeedback/editclientfeedback/${feedback._id}`}>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setSelectedfeedback(feedback._id);
+                  }}
+                  className="addButton"
+                >
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
+                {isModalOpen && (
+                  <EditClientFeedbackModal
+                    feedbackId={selectedfeedback}
+                    closeModal={() => setIsModalOpen(false)}
+                  />
+                )}
               </td>
             </tr>
           ))}
