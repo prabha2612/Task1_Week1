@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AddPhaseModal from "../add/addphases";
+import EditPhase from "../update/updatephases";
 
 const Phases = () => {
   const [phases, setPhases] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPhase, setSelectedPhase] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/phase/getphase"
-        );
+        const response = await axios.get("http://localhost:4000/api/phases");
         setPhases(response.data);
       } catch (error) {
         console.log(error);
@@ -26,7 +25,7 @@ const Phases = () => {
   const deletePhase = async (phaseId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/phase/deletephase/${phaseId}`
+        `http://localhost:4000/api/phases/${phaseId}`
       );
       setPhases((prevPhases) =>
         prevPhases.filter((phase) => phase._id !== phaseId)
@@ -85,9 +84,23 @@ const Phases = () => {
                 <button onClick={() => deletePhase(phase._id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>
-                <Link to={`/phases/editphases/${phase._id}`}>
+                <button
+                  onClick={() => {
+                    setSelectedPhase(phase._id);
+                    setIsModalOpen(true);
+                  }}
+                  className="addButton"
+                >
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
+                {isModalOpen && (
+                  <EditPhase
+                    phaseId={selectedPhase}
+                    closeModal={() => {
+                      setIsModalOpen(false);
+                    }}
+                  />
+                )}
               </td>
             </tr>
           ))}

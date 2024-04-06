@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AddOpescMatrixModal from "../add/addopescmatrix";
+import EditOpescMatrix from "../update/editopescmatrix";
 
 const OpescMatrix = () => {
   const [opescMatrices, setOpescMatrices] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedopescMatrices, setSelectedopescMatrices] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/opescmatrix/getopescmatrix"
+          "http://localhost:4000/api/opescmatrices"
         );
         setOpescMatrices(response.data);
       } catch (error) {
@@ -26,7 +27,7 @@ const OpescMatrix = () => {
   const deleteOpescMatrix = async (opescMatrixId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/opescmatrix/deleteopescmatrix/${opescMatrixId}`
+        `http://localhost:4000/api/opescmatrices//${opescMatrixId}`
       );
       setOpescMatrices((prevOpescMatrices) =>
         prevOpescMatrices.filter((matrix) => matrix._id !== opescMatrixId)
@@ -75,9 +76,23 @@ const OpescMatrix = () => {
                 <button onClick={() => deleteOpescMatrix(matrix._id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>
-                <Link to={"/opescalationmatrix/editopescmatrix/" + matrix._id}>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setSelectedopescMatrices(matrix._id);
+                  }}
+                  className="addButton"
+                >
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
+                {isModalOpen && (
+                  <EditOpescMatrix
+                    opescId={selectedopescMatrices}
+                    closeModal={() => {
+                      setIsModalOpen(false);
+                    }}
+                  />
+                )}
               </td>
             </tr>
           ))}

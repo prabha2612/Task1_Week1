@@ -9,11 +9,11 @@ import {
 
 const phaseroute = express.Router();
 
-phaseroute.post("/createphase", createphase);
-phaseroute.get("/getphase", getphase);
-phaseroute.get("/getonephase/:id", getOnephase);
-phaseroute.patch("/updatephase/:id", updatedphase);
-phaseroute.delete("/deletephase/:id", deletephase);
+phaseroute.post("/phases", createphase);
+phaseroute.get("/phases", getphase);
+phaseroute.get("/phases/:id", getOnephase);
+phaseroute.patch("/phases/:id", updatedphase);
+phaseroute.delete("/phases/:id", deletephase);
 // sprintroute.post("/downloadbudgetpdf",downlaodphase);
 
 export default phaseroute;

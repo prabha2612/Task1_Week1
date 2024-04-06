@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./audit.css";
 import AddMOMModal from "../add/addMoMs";
-import { Link } from "react-router-dom";
+import EditMOM from "../update/editMoMs";
 
 const MOM = () => {
   const [momData, setMomData] = useState([]);
@@ -16,7 +17,6 @@ const MOM = () => {
       } catch (error) {
         console.log(error);
       }
-
     };
 
     fetchData();
@@ -59,7 +59,6 @@ const MOM = () => {
               <td>{mom.momLink}</td>
               <td>{mom.comments}</td>
               <td className="actionButton">
-                <Link to={`/moms/editmoms/${mom._id}`}>Edit</Link>
                 <button
                   onClick={() => {
                     setIsModalOpen(true);
@@ -67,12 +66,12 @@ const MOM = () => {
                   }}
                   className="addButton"
                 >
-                  Add MOM
+                  <i className="fa-solid fa-pen-to-square"></i>
                 </button>
                 {isModalOpen && (
-                  <AddMOMModal
+                  <EditMOM
+                    momId={selectedMom}
                     closeModal={() => {
-                      momId = { selectedMom };
                       setIsModalOpen(false);
                     }}
                   />

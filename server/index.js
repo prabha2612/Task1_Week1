@@ -55,7 +55,7 @@ app.use("/api/version", versionroute);
 app.use("/api/description", descriptionroute);
 app.use("/api/scope", scoperoute);
 app.use("/api/techstack", techstackroute);
-app.use("/api/opescmatrix", opescmatrixroute);
+app.use("/api", opescmatrixroute);
 app.use("/api", finescmatrixroute);
 app.use("/api/techescmatrix", techescmatrixroute);
 app.use("/api/stakeholders", stakeholdersroute);

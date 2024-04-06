@@ -39,7 +39,7 @@ const Timelines = () => {
   };
 
   return (
-    <div className="Timeline">
+    <div className="AuditHistory">
       <button
         onClick={() => {
           setIsModalOpen(true);
