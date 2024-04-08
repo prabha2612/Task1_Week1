@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import AddProjectModal from "../add/addProjects";
 import toast from "react-hot-toast";
 import "./audit.css";
+import EditProject from "../update/editProjects";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/projects/getproject"
-        );
+        const response = await axios.get("http://localhost:4000/api/projects");
         setProjects(response.data);
       } catch (error) {
         console.error("Error fetching projects:", error);
@@ -27,7 +26,7 @@ const Projects = () => {
   const deleteProject = async (projectId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/projects/deleteproject/${projectId}`
+        `http://localhost:4000/api/projects/${projectId}`
       );
       setProjects((prevProjects) =>
         prevProjects.filter((project) => project._id !== projectId)
@@ -61,7 +60,20 @@ const Projects = () => {
                 <button onClick={() => deleteProject(project._id)}>
                   Delete
                 </button>
-                <Link to={`/projects/${project._id}/edit`}>Edit</Link>
+                <button
+                  onClick={() => {
+                    setSelectedProject(project._id);
+                    setIsModalOpen(true);
+                  }}
+                >
+                  Edit
+                </button>
+                {isModalOpen && (
+                  <EditProject
+                    projectId={selectedProject}
+                    closeModal={() => setIsModalOpen(false)}
+                  />
+                )}
               </td>
             </tr>
           ))}

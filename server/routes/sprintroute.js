@@ -1,13 +1,18 @@
 import express from "express";
-import { createsprint, deletesprint, getOnesprint, getsprint, updatedsprint } from "../controller/sprintwisecontroller.js";
+import {
+  createsprint,
+  deletesprint,
+  getOnesprint,
+  getsprint,
+  updatedsprint,
+} from "../controller/sprintwisecontroller.js";
 
 const sprintroute = express.Router();
 
-sprintroute.post("/createsprint", createsprint);
-sprintroute.get("/getsprint", getsprint);
-sprintroute.get("/getonesprint/:id", getOnesprint);
-sprintroute.patch("/updatesprint/:id", updatedsprint);
-sprintroute.delete("/deletesprint/:id", deletesprint);
-// sprintroute.post("/downloadbudgetpdf",downlaodsprint);
+sprintroute.post("/sprint", createsprint);
+sprintroute.get("/sprint", getsprint);
+sprintroute.get("/sprint/:id", getOnesprint);
+sprintroute.patch("/sprint/:id", updatedsprint);
+sprintroute.delete("/sprint/:id", deletesprint);
 
 export default sprintroute;

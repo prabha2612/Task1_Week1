@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./audit.css";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
 import AddDescriptionmodal from "../add/adddescription";
+import EditDescription from "../update/editdescription";
 
 const ProjectDescription = () => {
   const [descriptions, setDescriptions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selecteDescriptions, setSelecteDescriptions] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:4000/api/description/getdescription"
+        "http://localhost:4000/api/descriptions"
       );
       setDescriptions(response.data);
     };
@@ -22,9 +23,7 @@ const ProjectDescription = () => {
 
   const deleteDescription = async (descriptionId) => {
     await axios
-      .delete(
-        `http://localhost:4000/api/description/deletedescription/${descriptionId}`
-      )
+      .delete(`http://localhost:4000/api/descriptions/${descriptionId}`)
       .then((response) => {
         setDescriptions((prevDescriptions) =>
           prevDescriptions.filter(
@@ -65,9 +64,21 @@ const ProjectDescription = () => {
               <i className="fa-solid fa-trash"></i>
             </button>
             <br />
-            <Link to={"/description/editdescription/" + description._id}>
+            <button
+              onClick={() => {
+                setSelecteDescriptions(description._id);
+                setIsModalOpen(true);
+              }}
+              className="addButton"
+            >
               <i className="fa-solid fa-pen-to-square"></i>
-            </Link>
+            </button>
+            {isModalOpen && (
+              <EditDescription
+                descriptionId={selecteDescriptions}
+                closeModal={() => setIsModalOpen(false)}
+              />
+            )}
           </div>
         </div>
       ))}

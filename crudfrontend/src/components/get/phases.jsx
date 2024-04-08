@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AddPhaseModal from "../add/addphases";
-import EditPhase from "../update/updatephases";
+import EditPhase from "../update/editPhases.jsx";
 
 const Phases = () => {
   const [phases, setPhases] = useState([]);
@@ -72,13 +72,11 @@ const Phases = () => {
             <tr key={phase._id}>
               <td>{index + 1}</td>
               <td>{phase.title}</td>
-              <td>{new Date(phase.startDate).toLocaleDateString()}</td>
-              <td>{new Date(phase.completionDate).toLocaleDateString()}</td>
-              <td>{new Date(phase.approvalDate).toLocaleDateString()}</td>
+              <td>{phase.startDate}</td>
+              <td>{phase.completionDate}</td>
+              <td>{phase.approvalDate}</td>
               <td>{phase.status}</td>
-              <td>
-                {new Date(phase.revisedCompletionDate).toLocaleDateString()}
-              </td>
+              <td>{phase.revisedCompletionDate}</td>
               <td>{phase.comments}</td>
               <td className="actionButton">
                 <button onClick={() => deletePhase(phase._id)}>

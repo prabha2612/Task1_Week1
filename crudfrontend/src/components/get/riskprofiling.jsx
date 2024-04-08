@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AddRiskProfileModal from "../add/addriskprofiling";
+import EditRiskprofiling from "../update/editRiskprofiling";
 
 const RiskProfile = () => {
   const [riskProfiles, setRiskProfiles] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRiskProfile, setSelectedRiskProfile] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/riskprofile/getriskprofile"
+          "http://localhost:4000/api/riskprofiles"
         );
         setRiskProfiles(response.data);
       } catch (error) {
@@ -26,7 +27,7 @@ const RiskProfile = () => {
   const deleteRiskProfile = async (riskProfileId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/riskprofile/deleteriskprofile/${riskProfileId}`
+        `http://localhost:4000/api/riskprofiles/${riskProfileId}`
       );
       setRiskProfiles((prevRiskProfiles) =>
         prevRiskProfiles.filter((profile) => profile._id !== riskProfileId)
@@ -78,14 +79,28 @@ const RiskProfile = () => {
               <td>{profile.impact}</td>
               <td>{profile.remedialsteps}</td>
               <td>{profile.status}</td>
-              <td>{new Date(profile.closuredate).toLocaleDateString()}</td>
+              <td>{profile.closuredate}</td>
               <td className="actionButton">
                 <button onClick={() => deleteRiskProfile(profile._id)}>
                   <i className="fa-solid fa-trash"></i>
                 </button>
-                <Link to={`/riskprofiling/editriskprofiling/${profile._id}`}>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setSelectedRiskProfile(profile._id);
+                  }}
+                  className="addButton"
+                >
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
+                {isModalOpen && (
+                  <EditRiskprofiling
+                    riskprofileId={selectedRiskProfile}
+                    closeModal={() => {
+                      setIsModalOpen(false);
+                    }}
+                  />
+                )}
               </td>
             </tr>
           ))}

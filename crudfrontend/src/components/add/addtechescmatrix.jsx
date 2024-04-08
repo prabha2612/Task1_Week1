@@ -19,7 +19,7 @@ const AddTechescMatrixModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/techescmatrix/createtechescmatrix",
+        "http://localhost:4000/api/techescmatrices",
         matrix
       );
       toast.success(response.data.msg, { position: "top-right" });

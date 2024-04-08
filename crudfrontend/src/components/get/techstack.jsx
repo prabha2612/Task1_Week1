@@ -3,15 +3,17 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import AddTechstackModal from "../add/addtechstack";
 import { Link } from "react-router-dom";
+import EditTechstack from "../update/edittechstack";
 
 const Techstack = () => {
   const [techstacks, setTechstacks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTechstack, setselectedTechstack] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/techstack/gettechstack");
+        const response = await axios.get("http://localhost:4000/api/techstack");
         setTechstacks(response.data);
       } catch (error) {
         console.log(error);
@@ -23,8 +25,12 @@ const Techstack = () => {
 
   const deleteTechstack = async (techstackId) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/api/techstack/deletetechstack/${techstackId}`);
-      setTechstacks((prevTechstacks) => prevTechstacks.filter((techstack) => techstack._id !== techstackId));
+      const response = await axios.delete(
+        `http://localhost:4000/api/techstack/${techstackId}`
+      );
+      setTechstacks((prevTechstacks) =>
+        prevTechstacks.filter((techstack) => techstack._id !== techstackId)
+      );
       toast.success(response.data.msg, { position: "top-right" });
     } catch (error) {
       console.log(error);
@@ -41,8 +47,10 @@ const Techstack = () => {
       >
         Add Techstack
       </button>
-      {isModalOpen && <AddTechstackModal closeModal={() => setIsModalOpen(false)} />}
-      
+      {isModalOpen && (
+        <AddTechstackModal closeModal={() => setIsModalOpen(false)} />
+      )}
+
       {techstacks.map((techstack, index) => (
         <div key={techstack._id} className="techstackBox">
           <label>Backend:</label>
@@ -63,6 +71,21 @@ const Techstack = () => {
             <Link to={"/projectstack/edittechstack/" + techstack._id}>
               <i className="fa-solid fa-pen-to-square"></i>
             </Link>
+            <button
+              onClick={() => {
+                setselectedTechstack(techstack._id);
+                setIsModalOpen(true);
+              }}
+              className="addButton"
+            >
+              <i className="fa-solid fa-pen-to-square"></i>
+            </button>
+            {isModalOpen && (
+              <EditTechstack
+                matrixId={selectedTechstack}
+                closeModal={() => setIsModalOpen(false)}
+              />
+            )}
           </div>
         </div>
       ))}

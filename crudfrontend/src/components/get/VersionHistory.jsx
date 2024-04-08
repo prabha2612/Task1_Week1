@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./audit.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AddVersion from "../add/addVersionhistory.jsx";
+import EditVersion from "../update/editVersion.jsx";
 
 const Version = () => {
   const [versions, setVersions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [slectedVersion, setSlectedVersion] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        "http://localhost:4000/api/version/getversion"
-      );
+      const response = await axios.get("http://localhost:4000/api/versions");
       setVersions(response.data);
     };
 
@@ -22,7 +21,7 @@ const Version = () => {
 
   const deleteVersion = async (versionId) => {
     await axios
-      .delete(`http://localhost:4000/api/version/deleteversion/${versionId}`)
+      .delete(`http://localhost:4000/api/versions/${versionId}`)
       .then((respones) => {
         setVersions((prevVersion) =>
           prevVersion.filter((version) => version._id !== versionId)
@@ -80,9 +79,23 @@ const Version = () => {
                   <button onClick={() => deleteVersion(version._id)}>
                     <i className="fa-solid fa-trash"></i>
                   </button>
-                  <Link to={"/version/editversion/" + version._id}>
+                  <button
+                    onClick={() => {
+                      setIsModalOpen(true);
+                      setSlectedVersion(version._id);
+                    }}
+                    className="addButton"
+                  >
                     <i className="fa-solid fa-pen-to-square"></i>
-                  </Link>
+                  </button>
+                  {isModalOpen && (
+                    <EditVersion
+                      versionId={slectedVersion}
+                      closeModal={() => {
+                        setIsModalOpen(false);
+                      }}
+                    />
+                  )}
                 </td>
               </tr>
             );

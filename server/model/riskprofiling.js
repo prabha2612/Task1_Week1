@@ -26,7 +26,7 @@ const riskprofilingSchema = new mongoose.Schema({
     required: true,
   },
   closuredate: {
-    type: Date,
+    type: String,
     required: true,
   },
 });

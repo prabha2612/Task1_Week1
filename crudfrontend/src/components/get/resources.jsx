@@ -3,17 +3,16 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import AddResourcesModal from "../add/addresources";
+import EditResourceModal from "../update/editresources";
 
 const Resources = () => {
   const [resources, setResources] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [selectedResources, setSelectedResources] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/resources/getresource"
-        );
+        const response = await axios.get("http://localhost:4000/api/resources");
         setResources(response.data);
       } catch (error) {
         console.error("Error fetching resources:", error);
@@ -26,7 +25,7 @@ const Resources = () => {
   const deleteResource = async (resourceId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/resources/deleteresource/${resourceId}`
+        `http://localhost:4000/api/resources/${resourceId}`
       );
       setResources((prevResources) =>
         prevResources.filter((resource) => resource._id !== resourceId)
@@ -68,11 +67,26 @@ const Resources = () => {
               <td>{resource.comment}</td>
               <td>
                 <button onClick={() => deleteResource(resource._id)}>
-                  Delete
+                  <i className="fa-solid fa-trash"></i>
                 </button>
                 <Link to={`/resources/editresources/${resource._id}`}>
                   <i className="fa-solid fa-pen-to-square"></i>
                 </Link>
+                <button
+                  onClick={() => {
+                    setSelectedResources(resource._id);
+                    setIsModalOpen(true);
+                  }}
+                  className="addButton"
+                >
+                  <i className="fa-solid fa-pen-to-square"></i>
+                </button>
+                {isModalOpen && (
+                  <EditResourceModal
+                    resourcesId={selectedResources}
+                    closeModal={() => setIsModalOpen(false)}
+                  />
+                )}
               </td>
             </tr>
           ))}

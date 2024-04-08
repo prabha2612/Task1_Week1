@@ -16,7 +16,7 @@ const EditPhase = ({ phaseId, closeModal }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/phase/getonephase/${phaseId}`)
+      .get(`http://localhost:4000/api/phases/${phaseId}`)
       .then((response) => {
         setUpdatedPhase(response.data);
       })
@@ -34,7 +34,7 @@ const EditPhase = ({ phaseId, closeModal }) => {
     event.preventDefault();
     try {
       await axios.patch(
-        `http://localhost:4000/api/phase/updatephase/${phaseId}`,
+        `http://localhost:4000/api/phases/${phaseId}`,
         updatedPhase
       );
       toast.success("Phase updated successfully", { position: "top-right" });

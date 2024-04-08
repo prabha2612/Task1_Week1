@@ -23,7 +23,7 @@ const AddVersion = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/version/createversion",
+        "http://localhost:4000/api/versions",
         version
       );
       toast.success(response.data.msg, { position: "top-right" });

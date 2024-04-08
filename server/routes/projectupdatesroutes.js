@@ -9,10 +9,10 @@ import {
 
 const projectUpdateRoute = express.Router();
 
-projectUpdateRoute.post("/createprojectupdate", createProjectUpdate);
-projectUpdateRoute.get("/getprojectupdates", getProjectUpdates);
-projectUpdateRoute.get("/getoneprojectupdate/:id", getProjectUpdateById);
-projectUpdateRoute.patch("/updateprojectupdate/:id", updateProjectUpdate);
-projectUpdateRoute.delete("/deleteprojectupdate/:id", deleteProjectUpdate);
+projectUpdateRoute.post("/projectupdates", createProjectUpdate);
+projectUpdateRoute.get("/projectupdates", getProjectUpdates);
+projectUpdateRoute.get("/projectupdates/:id", getProjectUpdateById);
+projectUpdateRoute.patch("/projectupdates/:id", updateProjectUpdate);
+projectUpdateRoute.delete("/projectupdates/:id", deleteProjectUpdate);
 
 export default projectUpdateRoute;

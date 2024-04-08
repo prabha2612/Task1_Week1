@@ -19,7 +19,7 @@ const AddStakeholderModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/stakeholders/createstakeholders",
+        "http://localhost:4000/api/stakeholders",
         stakeholder
       );
       toast.success(response.data.msg, { position: "top-right" });

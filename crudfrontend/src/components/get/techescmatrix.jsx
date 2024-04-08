@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AddTechescMatrixModal from "../add/addtechescmatrix";
+import EditTechescMatrix from "../update/edittechescmatrix";
 
 const TechescMatrix = () => {
   const [techescMatrices, setTechescMatrices] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedtechescMatrices, setSelectedtechescMatrices] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/techescmatrix/gettechescmatrix"
+          "http://localhost:4000/api/techescmatrices"
         );
         setTechescMatrices(response.data);
       } catch (error) {
@@ -26,7 +27,7 @@ const TechescMatrix = () => {
   const deleteTechescMatrix = async (techescMatrixId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:4000/api/techescmatrix/deletetechescmatrix/${techescMatrixId}`
+        `http://localhost:4000/api/techescmatrices/${techescMatrixId}`
       );
       setTechescMatrices((prevTechescMatrices) =>
         prevTechescMatrices.filter((matrix) => matrix._id !== techescMatrixId)
@@ -76,11 +77,23 @@ const TechescMatrix = () => {
                   <i className="fa-solid fa-trash"></i>
                 </button>
                 <br />
-                <Link
-                  to={`/techescalationmatrix/edittecescmatrix/${matrix._id}`}
+                <button
+                  onClick={() => {
+                    setIsModalOpen(true);
+                    setSelectedtechescMatrices(matrix._id);
+                  }}
+                  className="addButton"
                 >
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
+                {isModalOpen && (
+                  <EditTechescMatrix
+                    matrixId={selectedtechescMatrices}
+                    closeModal={() => {
+                      setIsModalOpen(false);
+                    }}
+                  />
+                )}
               </td>
             </tr>
           ))}

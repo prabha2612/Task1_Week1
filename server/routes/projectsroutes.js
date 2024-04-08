@@ -9,11 +9,11 @@ import {
 
 const projectroute = express.Router();
 
-projectroute.post("/createproject", createProject);
-projectroute.get("/getproject", getProjects);
-projectroute.get("/getoneproject/:id", getProjectById);
-projectroute.patch("/updateproject/:id", updateProject);
-projectroute.delete("/deleteproject/:id", deleteProject);
+projectroute.post("/projects", createProject);
+projectroute.get("/projects", getProjects);
+projectroute.get("/projects/:id", getProjectById);
+projectroute.patch("/projects/:id", updateProject);
+projectroute.delete("/projects/:id", deleteProject);
 // projectroute.post("/downloadresourcepdf", downlaodbudget);
 
 export default projectroute;

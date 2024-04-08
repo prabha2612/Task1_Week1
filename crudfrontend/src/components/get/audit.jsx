@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./audit.css";
 import axios from "axios";
 import AddAuditModal from "../add/addaudit.jsx";
-import EditAuditModal from "../update/updateAudit.jsx";
+import EditAuditModal from "../update/editAudit.jsx";
 
 const Audit = () => {
   const [audits, setaudits] = useState([]);

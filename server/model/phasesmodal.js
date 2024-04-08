@@ -6,15 +6,15 @@ const phaseSchema = new mongoose.Schema({
     required: true,
   },
   startDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   completionDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   approvalDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   status: {
@@ -22,7 +22,7 @@ const phaseSchema = new mongoose.Schema({
     required: true,
   },
   revisedCompletionDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   comments: {

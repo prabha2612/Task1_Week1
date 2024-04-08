@@ -20,7 +20,7 @@ const AddResourcesModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/resources/createresource",
+        "http://localhost:4000/api/resources",
         resourceData
       );
       toast.success(response.data.msg, { position: "top-right" });

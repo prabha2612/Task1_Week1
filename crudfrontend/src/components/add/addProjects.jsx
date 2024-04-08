@@ -18,7 +18,7 @@ const AddProjectModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/projects/createproject",
+        "http://localhost:4000/api/projects",
         project
       );
       toast.success(response.data.msg, { position: "top-right" });

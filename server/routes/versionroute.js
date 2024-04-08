@@ -1,13 +1,19 @@
 import express from "express";
-import { createversion, deleteversion, getOneversion, getversion, updatedversion } from "../controller/versioncontroller.js";
+import {
+  createversion,
+  deleteversion,
+  getOneversion,
+  getversion,
+  updatedversion,
+} from "../controller/versioncontroller.js";
 
 const versionroute = express.Router();
 
-versionroute.post("/createversion", createversion);
-versionroute.get("/getversion", getversion);
-versionroute.get("/getoneversion/:id", getOneversion);
-versionroute.patch("/updateversion/:id", updatedversion);
-versionroute.delete("/deleteversion/:id", deleteversion);
+versionroute.post("/versions", createversion);
+versionroute.get("/versions", getversion);
+versionroute.get("/versions/:id", getOneversion);
+versionroute.patch("/versions/:id", updatedversion);
+versionroute.delete("/versions/:id", deleteversion);
 // versionroute.post("/downloadbudgetpdf",downlaodversion);
 
 export default versionroute;

@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import AddSprintModal from "../add/addsprintwise";
+import EditSprintModal from "../update/editsprintwise";
 
 const SprintWise = () => {
   const [sprints, setSprints] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSprint, setSelectedSprint] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/sprintwise/getsprint"
-        );
+        const response = await axios.get("http://localhost:4000/api/sprint");
         setSprints(response.data);
       } catch (error) {
         console.log(error);
@@ -56,14 +55,28 @@ const SprintWise = () => {
             <tr key={sprint._id}>
               <td>{index + 1}</td>
               <td>{sprint.sprint}</td>
-              <td>{new Date(sprint.startDate).toLocaleDateString()}</td>
-              <td>{new Date(sprint.endDate).toLocaleDateString()}</td>
+              <td>{sprint.startDate}</td>
+              <td>{sprint.endDate}</td>
               <td>{sprint.status}</td>
               <td>{sprint.comments}</td>
               <td className="actionButton">
-                <Link to={`/sprintwise/editsprint/${sprint._id}`}>
+                <button
+                  onClick={() => {
+                    setSelectedSprint(sprint._id);
+                    setIsModalOpen(true);
+                  }}
+                  className="addButton"
+                >
                   <i className="fa-solid fa-pen-to-square"></i>
-                </Link>
+                </button>
+                {isModalOpen && (
+                  <EditSprintModal
+                    sprintId={selectedSprint}
+                    closeModal={() => {
+                      setIsModalOpen(false);
+                    }}
+                  />
+                )}
               </td>
             </tr>
           ))}

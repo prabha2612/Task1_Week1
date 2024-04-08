@@ -1,10 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Audit from "../get/audit.jsx";
 import Budget from "../get/projectbudget.jsx";
-import Editaudit from "../update/updateAudit.jsx";
-import EditBudget from "../update/EditBudget.jsx";
 import VersionHistory from "../get/VersionHistory.jsx";
-import EditVersion from "../update/EditVersion.jsx";
 // import { Dashboard } from "../Dashboard/dashboard.jsx";
 import Projects from "../get/Projects.jsx";
 import EditProject from "../update/editProjects.jsx";
@@ -31,7 +28,6 @@ import EditResourceModal from "../update/editresources.jsx";
 import ClientFeedback from "../get/feedback.jsx";
 import EditClientFeedback from "../update/editfeedback.jsx";
 import Phases from "../get/phases.jsx";
-import EditPhase from "../update/updatephases.jsx";
 import SprintWise from "../get/sprintwise.jsx";
 import EditSprintModal from "../update/editsprintwise.jsx";
 import ProjectUpdates from "../get/projectupdates.jsx";
@@ -41,24 +37,19 @@ import EditMOM from "../update/editMoMs.jsx";
 
 function AppRoutes() {
   return (
-    // <BrowserRouter>
     <Routes>
-      {/* <Route path="/" element={<Dashboard />} /> */}
       <Route path="/">
         <Route index element={<Projects />} />
-        <Route path="editversion/:id" element={<EditProject />} />
+        <Route path="editprojects/:id" element={<EditProject />} />
       </Route>
       <Route path="/audit">
         <Route index element={<Audit />} />
-        <Route path="editaudit/:id" element={<Editaudit />} />
       </Route>
       <Route path="/budget">
         <Route index element={<Budget />} />
-        <Route path="editbudget/:id" element={<EditBudget />} />
       </Route>
       <Route path="/version">
         <Route index element={<VersionHistory />} />
-        <Route path="editversion/:id" element={<EditVersion />} />
       </Route>
       <Route path="/description">
         <Route index element={<ProjectDescription />} />
@@ -94,7 +85,6 @@ function AppRoutes() {
       </Route>
       <Route path="/phases">
         <Route index element={<Phases />} />
-        <Route path="editphases/:id" element={<EditPhase />} />
       </Route>
       <Route path="/sprintwise">
         <Route index element={<SprintWise />} />
@@ -121,8 +111,6 @@ function AppRoutes() {
         <Route path="editmoms/:id" element={<EditMOM />} />
       </Route>
     </Routes>
-
-    // </BrowserRouter>
   );
 }
 

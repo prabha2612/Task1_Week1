@@ -23,7 +23,7 @@ const AddRiskprofiling = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/riskprofile/createriskprofile",
+        "http://localhost:4000/api/riskprofiles",
         riskprofiling
       );
       toast.success(response.data.msg, { position: "top-right" });

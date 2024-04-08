@@ -1,13 +1,19 @@
 import express from "express";
-import { createstakeholder, deletestakeholder, getOnestakeholder, getstakeholder, updatedstakeholder } from "../controller/stakeholdercontroller.js";
+import {
+  createstakeholder,
+  deletestakeholder,
+  getOnestakeholder,
+  getstakeholder,
+  updatedstakeholder,
+} from "../controller/stakeholdercontroller.js";
 
 const stakeholdersroute = express.Router();
 
-stakeholdersroute.post("/createstakeholders", createstakeholder);
-stakeholdersroute.get("/getstakeholders", getstakeholder);
-stakeholdersroute.get("/getonestakeholders/:id", getOnestakeholder);
-stakeholdersroute.patch("/updatestakeholders/:id", updatedstakeholder);
-stakeholdersroute.delete("/deletestakeholders/:id", deletestakeholder);
+stakeholdersroute.post("/stakeholders", createstakeholder);
+stakeholdersroute.get("/stakeholders", getstakeholder);
+stakeholdersroute.get("/stakeholders/:id", getOnestakeholder);
+stakeholdersroute.patch("/stakeholders/:id", updatedstakeholder);
+stakeholdersroute.delete("/stakeholders/:id", deletestakeholder);
 // scoperoute.post("/downloadbudgetpdf",downlaodscope);
 
 export default stakeholdersroute;

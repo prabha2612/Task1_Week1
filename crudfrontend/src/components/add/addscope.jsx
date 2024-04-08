@@ -17,7 +17,7 @@ const AddScopeModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/scope/createscope",
+        "http://localhost:4000/api/scope",
         scope
       );
       toast.success(response.data.msg, { position: "top-right" });

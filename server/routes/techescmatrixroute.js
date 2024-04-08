@@ -9,11 +9,11 @@ import {
 
 const techescmatrixroute = express.Router();
 
-techescmatrixroute.post("/createtechescmatrix", createtechescmatrix);
-techescmatrixroute.get("/gettechescmatrix", gettechescmatrix);
-techescmatrixroute.get("/getonetechescmatrix/:id", getOnetechescmatrix);
-techescmatrixroute.patch("/updattechpescmatrix/:id", updatedtechescmatrix);
-techescmatrixroute.delete("/deletetechescmatrix/:id", deletetechescmatrix);
+techescmatrixroute.post("/techescmatrices", createtechescmatrix);
+techescmatrixroute.get("/techescmatrices", gettechescmatrix);
+techescmatrixroute.get("/techescmatrices/:id", getOnetechescmatrix);
+techescmatrixroute.patch("/techescmatrices/:id", updatedtechescmatrix);
+techescmatrixroute.delete("/techescmatrices/:id", deletetechescmatrix);
 // scoperoute.post("/downloadbudgetpdf",downlaodtechescmatrix);
 
 export default techescmatrixroute;

@@ -23,7 +23,7 @@ const AddPhaseModal = ({ closeModal }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/phase/createphase",
+        "http://localhost:4000/api/phases",
         phase
       );
       toast.success(response.data.msg, { position: "top-right" });
@@ -99,7 +99,9 @@ const AddPhaseModal = ({ closeModal }) => {
               />
             </div>
             <div className="inputgroup">
-              <label htmlFor="revisedCompletionDate">Revised Completion Date: </label>
+              <label htmlFor="revisedCompletionDate">
+                Revised Completion Date:
+              </label>
               <input
                 type="date"
                 id="revisedCompletionDate"

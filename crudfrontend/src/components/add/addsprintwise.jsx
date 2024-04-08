@@ -19,7 +19,10 @@ const AddSprintModal = ({ closeModal }) => {
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/sprintwise/createsprint", sprintData);
+      const response = await axios.post(
+        "http://localhost:4000/api/sprint",
+        sprintData
+      );
       toast.success(response.data.msg, { position: "top-right" });
       closeModal(); // Close the modal after successful submission
     } catch (error) {
